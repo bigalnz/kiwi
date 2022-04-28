@@ -14,6 +14,4 @@ public interface BirdService {
     BirdDTO getBirdDTO(Long id);
     Collection<BirdDTO> getBirdListDTO();
     BirdViewDTO getBirdViewDTO(Long id);
-
-    Bird getBirdTextXML();
 }

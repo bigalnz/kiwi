@@ -24,11 +24,6 @@ public class BirdServiceImpl implements BirdService {
     private final HealthCheckRepository healthCheckRepository;
 
     @Override
-    public Bird getBirdTextXML() {
-        return birdRepository.getBirdTestXML();
-    }
-
-    @Override
     public BirdDTO getBirdDTO(Long id) {
         return birdRepository.getBirdDTO(id);
     }

@@ -16,25 +16,22 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class KiwiController {
 
-    // use /bird/{id} for one bird
-    // /birds for dashboard view
 
     @Autowired
     private final BirdServiceImpl birdService;
     @Autowired
     private final HealthCheckServiceImpl healthCheckService;
 
-    // GET ONE BIRD
+    // GET ONE BIRD WITH EXTENDED FIELDS
     @GetMapping("/{id}")
     public ResponseEntity<BirdViewDTO> getKiwi(@PathVariable("id") Long id) {
-        birdService.getBirdTextXML();
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
                 //.body(birdService.getBirdDTO(id)); one summary bird
                 .body(birdService.getBirdViewDTO(id));
     }
 
-    // GET LIST OF BIRDS
+    // GET LIST OF BIRDS WITH SUMMARY FIELDS
     @GetMapping("/")
     public ResponseEntity<Collection<BirdDTO>> getListBirdDTO() { // was reutninging <BirdDashboardDTO>
         return ResponseEntity.ok()

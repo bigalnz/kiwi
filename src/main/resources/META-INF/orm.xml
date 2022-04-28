@@ -4,65 +4,174 @@
                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
         http://java.sun.com/xml/ns/persistence/orm_2_0.xsd ">
 
-    <!--native SQL query to find a book by isbn-->
-    <named-query name="bird.testXML">
-        <query>SELECT b FROM Bird b WHERE b.id = 5</query>
-    </named-query>
-
-    <named-native-query name="find_bird_extended1" result-set-mapping="bird_extended_dto">
+    <named-native-query name="find_bird_full" result-set-mapping="bird_full" result-class="com.nz.kiwi.model.Bird">
         <query>WITH cte1 AS (
-                                SELECT *
-                                FROM (
-                                    SELECT id AS hc_id, bird_id, catch_date
-                                    , ROW_NUMBER() OVER (PARTITION BY bird_id ORDER BY catch_date DESC) AS n
-                                    FROM HEALTH_CHECK
-                                    ) AS cte1a
-                                WHERE n = 1
-                                )
-                    , cte2 AS (
-                                SELECT *
-                                FROM (
-                                        SELECT p.id AS pit_id
-                                        , hc.bird_id
-                                        , p.Health_Check_Id
-                                        , p.code
-                                        , hc.catch_date as catchdate
-                                        , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
-                                        FROM PIT          AS p
-                                        JOIN HEALTH_CHECK AS hc
-                                        ON p.Health_Check_Id = hc.id
-                                      ) AS cte2a
-                                    WHERE n = 1
-                                )
-                    , cte3 AS (
-                                SELECT *
-                                FROM (
-                                        SELECT t.id AS transmitter_id
-                                        , hc.bird_id
-                                        , t.Health_Check_Id
-                                        , t.channel
-                                        , hc.catch_date as catchdate
-                                        , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
-                                        FROM TRANSMITTER          AS t
-                                        JOIN HEALTH_CHECK AS hc
-                                        ON t.Health_Check_Id = hc.id
-                                      ) AS cte3a
-                                WHERE n = 1
-                                )
-                    SELECT b.id AS birdId, b.name, b.sex, cte1.catch_date AS catchDate, cte1.hc_id as healthCheckId, cte2.code, cte3.channel, b.status, b.comment
-                    FROM BIRD AS b
+            SELECT *
+            FROM (
+                     SELECT id AS hc_id, bird_id, catch_date
+                          , ROW_NUMBER() OVER (PARTITION BY bird_id ORDER BY catch_date DESC) AS n
+                     FROM HEALTH_CHECK
+                 ) AS cte1a
+            WHERE n = 1
+        )
+                  , cte2 AS (
+                SELECT *
+                FROM (
+                         SELECT p.id AS pit_id
+                              , hc.bird_id
+                              , p.Health_Check_Id
+                              , p.code
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM PIT          AS p
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON p.Health_Check_Id = hc.id
+                     ) AS cte2a
+                WHERE n = 1
+            )
+                  , cte3 AS (
+                SELECT *
+                FROM (
+                         SELECT t.id AS transmitter_id
+                              , hc.bird_id
+                              , t.Health_Check_Id
+                              , t.channel
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM TRANSMITTER          AS t
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON t.Health_Check_Id = hc.id
+                     ) AS cte3a
+                WHERE n = 1
+            )
+               SELECT b.id AS birdId, b.name, b.sex, cte1.catch_date AS catchDate, cte1.hc_id as healthCheckId, cte2.code, cte3.channel
+               FROM BIRD AS b
                         LEFT JOIN cte1
-                            ON cte1.bird_id = b.id
+                                  ON cte1.bird_id = b.id
                         LEFT JOIN cte2
-                            ON cte2.bird_id = b.id
+                                  ON cte2.bird_id = b.id
                         LEFT JOIN cte3
-                            ON cte3.bird_id = b.id
-                    WHERE b.id=:id</query>
+                                  ON cte3.bird_id = b.id
+               WHERE b.id = :id</query>
     </named-native-query>
 
-    <sql-result-set-mapping name="bird_extended_dto">
-        <entity-result entity-class="com.nz.kiwi.dto.BirdViewDTO">
-            <field-result name="birdId" column="id"/>
+    <named-native-query name="list_bird_full" result-set-mapping="bird_full" result-class="com.nz.kiwi.model.Bird">
+        <query>WITH cte1 AS (
+            SELECT *
+            FROM (
+                     SELECT id AS hc_id, bird_id, catch_date
+                          , ROW_NUMBER() OVER (PARTITION BY bird_id ORDER BY catch_date DESC) AS n
+                     FROM HEALTH_CHECK
+                 ) AS cte1a
+            WHERE n = 1
+        )
+                  , cte2 AS (
+                SELECT *
+                FROM (
+                         SELECT p.id AS pit_id
+                              , hc.bird_id
+                              , p.Health_Check_Id
+                              , p.code
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM PIT          AS p
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON p.Health_Check_Id = hc.id
+                     ) AS cte2a
+                WHERE n = 1
+            )
+                  , cte3 AS (
+                SELECT *
+                FROM (
+                         SELECT t.id AS transmitter_id
+                              , hc.bird_id
+                              , t.Health_Check_Id
+                              , t.channel
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM TRANSMITTER          AS t
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON t.Health_Check_Id = hc.id
+                     ) AS cte3a
+                WHERE n = 1
+            )
+               SELECT b.id AS birdId, b.name, b.sex, cte1.catch_date AS catchDate, cte1.hc_id as healthCheckId, cte2.code, cte3.channel
+               FROM BIRD AS b
+                        LEFT JOIN cte1
+                                  ON cte1.bird_id = b.id
+                        LEFT JOIN cte2
+                                  ON cte2.bird_id = b.id
+                        LEFT JOIN cte3
+                                  ON cte3.bird_id = b.id
+        </query>
+    </named-native-query>
+
+    <named-native-query name="find_bird_extended" result-set-mapping="bird_extended" result-class="com.nz.kiwi.model.Bird">
+        <query>WITH cte1 AS (
+            SELECT *
+            FROM (
+                     SELECT id AS hc_id, bird_id, catch_date
+                          , ROW_NUMBER() OVER (PARTITION BY bird_id ORDER BY catch_date DESC) AS n
+                     FROM HEALTH_CHECK
+                 ) AS cte1a
+            WHERE n = 1
+        )
+                  , cte2 AS (
+                SELECT *
+                FROM (
+                         SELECT p.id AS pit_id
+                              , hc.bird_id
+                              , p.Health_Check_Id
+                              , p.code
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM PIT          AS p
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON p.Health_Check_Id = hc.id
+                     ) AS cte2a
+                WHERE n = 1
+            )
+                  , cte3 AS (
+                SELECT *
+                FROM (
+                         SELECT t.id AS transmitter_id
+                              , hc.bird_id
+                              , t.Health_Check_Id
+                              , t.channel
+                              , hc.catch_date as catchdate
+                              , RANK() OVER (PARTITION BY hc.bird_id ORDER BY catch_date DESC) AS n
+                         FROM TRANSMITTER          AS t
+                                  JOIN HEALTH_CHECK AS hc
+                                       ON t.Health_Check_Id = hc.id
+                     ) AS cte3a
+                WHERE n = 1
+            )
+               SELECT b.id AS birdId, b.name, b.sex, cte1.catch_date AS catchDate, cte1.hc_id as healthCheckId, cte2.code, cte3.channel, b.status, b.comment
+               FROM BIRD AS b
+                        LEFT JOIN cte1
+                                  ON cte1.bird_id = b.id
+                        LEFT JOIN cte2
+                                  ON cte2.bird_id = b.id
+                        LEFT JOIN cte3
+                                  ON cte3.bird_id = b.id
+               WHERE b.id = :id</query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="bird_full">
+        <entity-result entity-class="com.nz.kiwi.model.Bird">
+            <field-result name="birdId" column="birdId"/>
+            <field-result name="healthCheckId" column="healthCheckId"/>
+            <field-result name="name" column="name"/>
+            <field-result name="sex" column="sex"/>
+            <field-result name="catchDate" column="catchDate"/>
+            <field-result name="code" column="code"/>
+            <field-result name="channel" column="channel"/>
+        </entity-result>
+    </sql-result-set-mapping>
+
+    <sql-result-set-mapping name="bird_extended">
+        <entity-result entity-class="com.nz.kiwi.model.Bird">
+            <field-result name="birdId" column="birdId"/>
             <field-result name="healthCheckId" column="healthCheckId"/>
             <field-result name="name" column="name"/>
             <field-result name="sex" column="sex"/>
