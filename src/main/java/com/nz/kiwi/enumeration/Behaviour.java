@@ -4,9 +4,9 @@ public enum Behaviour {
 
     POOED("POOED"),
     CALM("CALM"),
-    STRUGGLED_LOTS("STRUGGLED_LOTS"),
-    STRUGGLED_SOME("STRUGGLED_SOME"),
-    BLEW_BUBBLES("BLEW_BUBBLES");
+    STRUGGLED_LOTS("STRUGGLED LOTS"),
+    STRUGGLED_SOME("STRUGGLED SOME"),
+    BLEW_BUBBLES("BLEW BUBBLES");
     private final String behaviour;
 
     Behaviour (String behaviour) {

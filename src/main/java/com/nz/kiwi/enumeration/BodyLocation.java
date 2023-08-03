@@ -1,9 +1,9 @@
 package com.nz.kiwi.enumeration;
 
 public enum BodyLocation {
-    MOSTLY_FACE("MOSTLY_FACE"),
-    MOSTLY_WING("MOSTLY_WING"),
-    ALL_OVER("ALL_OVER");
+    MOSTLY_FACE("MOSTLY FACE"),
+    MOSTLY_WING("MOSTLY WING"),
+    ALL_OVER("ALL OVER");
     private final String bodyLocation;
 
     BodyLocation (String bodyLocation) {

@@ -1,5 +1,6 @@
 package com.nz.kiwi.enumeration;
 
+
 public enum Sex {
     FEMALE("FEMALE"),
     MALE("MALE");

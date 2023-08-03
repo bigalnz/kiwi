@@ -2,8 +2,8 @@ package com.nz.kiwi.enumeration;
 
 public enum BodyCondition {
     DYING("DYING"),
-    SKINNY_BONY("SKINNY_BONY"),
-    MUSCLE_FAT("MUSCLE_FAT"),
+    SKINNY_BONY("SKINNY BONY"),
+    MUSCLE_FAT("MUSCLE FAT"),
     OBESE("OBESE");
     private final String bodyCondition;
 

@@ -3,31 +3,32 @@ package com.nz.kiwi.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyToOne;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transmitter {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+@DiscriminatorValue("TRANSMITTER")
+public class Transmitter extends Task {
+
     private Integer channel;
-    private Double channelOffset;
-    //private LocalDate dateAttached;
-    //@ManyToOne(fetch = FetchType.LAZY, optional = true)
-    //private Bird bird;
-    @OneToOne(fetch = FetchType.LAZY, optional = true)
-    private HealthCheck healthCheck;
+    private Double tuning;
+    private LocalDateTime start;
+    private LocalDateTime finish;
+
+    @Enumerated(EnumType.STRING)
+    Type transmitterTaskType;
+    public enum Type {
+        ATTACHED,
+        REMOVED,
+        REPLACED
+    }
 
     @Lob
     private String comment;
-
 
 }

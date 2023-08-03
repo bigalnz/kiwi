@@ -1,11 +1,11 @@
 package com.nz.kiwi.enumeration;
 
-public enum BirdStatus {
+public enum Status {
     ALIVE("AVLIE"),
     DECEASED("DECEASED");
     private final String birdStatus;
 
-    BirdStatus (String birdStatus) {
+    Status(String birdStatus) {
         this.birdStatus = birdStatus;
     }
 

@@ -1,19 +1,14 @@
 package com.nz.kiwi.service;
-
-import com.nz.kiwi.dto.HealthCheckListDTO;
-import com.nz.kiwi.dto.HealthCheckViewDTO;
 import com.nz.kiwi.model.HealthCheck;
-import java.util.Collection;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface HealthCheckService {
-    HealthCheck create(HealthCheck healthCheck);
-    Collection<HealthCheck> list();
-    HealthCheck get(Long id);
-    HealthCheck update(HealthCheck healthCheck);
-    Boolean delete(Long id);
-    Collection<HealthCheck> getHealthCheckByBirdId(Long id);
-    HealthCheck healthCheckWithWeights(Long id);
-    Collection<HealthCheckListDTO> listHealthCheckDTO();
-    HealthCheckViewDTO getHealthCheckViewDTO(Long id);
-    HealthCheck findNewestHealthCheckByBirdId(Long id);
+
+    Optional<HealthCheck> get(Long id);
+    HealthCheck save(HealthCheck healthCheck);
+    Optional<HealthCheck> getOneManually(Long id);
+
+    List<HealthCheck> findAllHealthChecksBy();
 }

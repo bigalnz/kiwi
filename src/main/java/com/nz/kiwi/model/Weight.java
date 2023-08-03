@@ -13,11 +13,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Weight {
+public class Weight extends Task {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
     private Double measurement;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

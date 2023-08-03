@@ -1,0 +1,85 @@
+INSERT INTO BIRD (name, sex, status, taxa, comment)
+VALUES ('Natasha', 'FEMALE', 'ALIVE', 1, 'Big beak'),
+       ('Jono','MALE' , 'ALIVE', 2, 'Fast runner'),
+       ('Clara', 'FEMALE', 'ALIVE', 3, 'Caught by John 2022'),
+       ('Maaka', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Andre', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Kobi', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Vincent', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Dario', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Minnie', 'FEMALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Ponui', 'FEMALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Tako', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Mark', 'MALE', 'ALIVE', 1, 'Fit and healthy'),
+       ('Dennis', 'MALE', 'ALIVE', 1, 'Fit and healthy');
+INSERT INTO HEALTH_CHECK (behaviour, body_condition, capture, catch_date, catch_time, catching_comment, disease_comment, lice_coverage, lice_location, location, parasite_coverage, parasite_location, release_time, skin_disorder, bird_id)
+VALUES ('CALM', 'MUSCLE FAT', 'EASY', '2022-03-14', '18:47:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(-36.889792 175.181493)'), 'FEW', 'MOSTLY WING', '19:32:01.000', 'LIGHT', '1' ),
+       ('STRUGGLED LOTS', 'DYING', 'EASY', '2021-03-12', '15:47:00.000', 'No comment catch', 'No comment disease', 'SOME', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'FEW', 'MOSTLY FACE', '16:35:01.000', 'MODERATE', '5' ),
+       ('STRUGGLED SOME', 'SKINNY BONY', 'EASY', '2020-02-14', '13:47:00.000', 'No comment catch', 'No comment disease', 'TONNES', 'MOSTLY FACE',  ST_GeomFromText('POINT(1 1)'), 'SOME', 'MOSTLY WING', '14:03:01.000', 'LIGHT', '3' ),
+       ('STRUGGLED LOTS', 'MUSCLE FAT', 'SURFACE CHASING', '2016-01-14', '10:42:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'TONNES', 'ALL OVER', '13:56:01.000', 'MODERATE', '1' ),
+       ('STRUGGLED SOME', 'DYING', 'SURFACE CHASING', '2015-03-14', '01:43:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'SOME', 'ALL OVER', '12:32:01.000', 'LIGHT', '1' ),
+       ('STRUGGLED LOTS', 'SKINNY BONY', 'SURFACE CHASING', '2017-05-18', '12:47:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'SOME', 'MOSTLY WING', '13:56:01.000', 'MODERATE', '2' ),
+       ('CALM', 'DYING', 'SURFACE CHASING', '2014-06-04', '06:47:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'SOME', 'ALL OVER', '12:32:01.000', 'LIGHT', '2' ),
+       ('STRUGGLED LOTS', 'DYING', 'SURFACE CHASING', '2013-06-10', '20:21:00.000', 'No comment catch', 'No comment disease', 'FEW', 'MOSTLY WING',  ST_GeomFromText('POINT(1 1)'), 'FEW', 'ALL OVER', '19:27:01.000', 'LIGHT', '1' );
+INSERT INTO PIT (code, comment, health_check_id, bird_id, date_inserted)
+VALUES  ('0007DDFA8B', '', 8, 1, "2023-06-01"),
+        ('0007E0DE4A', '', 2, 2, "2023-05-07"),
+        ('0007E0DEEF', '', 3, 3, "2023-04-04"),
+        ('0007E0DF6A', '', 4, 2, "2023-01-01"),
+        ('0007E0DDE6', '', 5, 4, "2022-09-02"),
+        ('0007E0E0C0', '', 6, 5, "2021-09-11"),
+        ('0007E01F5D', '', 7, 6, "2022-11-26"),
+        ('0007E0E0CC', '', NULL, NULL, NULL),
+        ('0007E0DF5B', '', NULL, NULL, NULL),
+        ('0007E0DF45', '', NULL, NULL, NULL);
+INSERT INTO WEIGHT (measurement, health_check_id)
+VALUES (2.3, '1'),
+       (2.25, '2'),
+       (1.7, '3'),
+       (1.8, '3'),
+       (2.20, '1'),
+       (2.1, '1'),
+       (1.85, '3');
+INSERT INTO TARSUS_LENGTH (measurement, health_check_id)
+VALUES (16.4, '1'),
+       (16.1, '1'),
+       (15.2, '1'),
+       (12.8, '2'),
+       (11.1, '2');
+INSERT INTO TARSUS_DEPTH (measurement, health_check_id)
+VALUES (16.4, '1'),
+       (16.1, '1'),
+       (15.2, '1'),
+       (12.8, '2'),
+       (11.1, '2');
+INSERT INTO TARSUS_WIDTH (measurement, health_check_id)
+VALUES (16.4, '1'),
+       (16.1, '1'),
+       (15.2, '1'),
+       (12.8, '2'),
+       (11.1, '2');
+INSERT INTO BEAK_LENGTH (measurement, health_check_id)
+VALUES (195.3, 1),
+       (194.5, 1),
+       (196.2, 1),
+       (112.8, 2),
+       (111.1, 2);
+
+/*DELETE FROM TRANSMITTER_KIWI;
+DELETE FROM TRANSMITTER; */
+INSERT INTO TRANSMITTER (channel)
+VALUES (01),
+       (02),
+       (03),
+       (07),
+       (09),
+       (11),
+       (13),
+       (15);
+INSERT INTO TRANSMITTER_BIRD (start_date, start_time, finish_date, finish_time, offset, removed_date)
+VALUES ("2023-06-01", "14:01:00", "2023-06-01", "14:30:00", "-1.5", NULL );
+
+/*
+ INSERT INTO TRANSMITTER_BIRD (start_date, start_time, finish_date, finish_time, transmitter_id, offset, removed_date)
+VALUES ("2023-06-01", "14:01:00", "2023-06-01", "14:30:00", 26, "-1.5", NULL );
+ */

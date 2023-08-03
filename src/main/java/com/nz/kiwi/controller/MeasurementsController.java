@@ -12,40 +12,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/healthchecks")
+@RequestMapping("/measure")
 @RequiredArgsConstructor
-public class HealthCheckController {
+public class MeasurementsController {
 
     @Autowired
-    private final HealthCheckServiceImpl healthCheckService;
+    private final MeasurementsServiceImpl measurementsService;
+
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<HealthCheck>> find(@PathVariable Long id) {
-        Optional<HealthCheck> test = healthCheckService.getOneManually(Long.valueOf(1));
+    public ResponseEntity<Optional<Measurements>> findMeasure(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
-                .body(healthCheckService.getOneManually(id));
+                .body(measurementsService.getMeasurements(id));
     }
-
-    @GetMapping("/fhc/{id}")
-    public ResponseEntity<Optional<HealthCheck>> findFull(@PathVariable Long id) {
-        return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
-                .body(healthCheckService.getFullHealthCheck(id));
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<HealthCheck>> list() {
-        return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
-                .body(healthCheckService.findAllHealthChecksBy());
-    }
-
-
 
 /*
 

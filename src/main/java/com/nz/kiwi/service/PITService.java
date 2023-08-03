@@ -1,15 +1,11 @@
 package com.nz.kiwi.service;
-
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.model.PIT;
 
-import java.util.Collection;
+import java.util.Optional;
 
 public interface PITService {
 
-    PIT create(PIT pit);
-    Collection<PIT> list();
-    PIT get(Long id);
-    PIT update(PIT pit);
-    void delete(Long id);
+    Optional<PIT> findById(Long id);
+    public PIT savePIT(PIT pit);
 }
