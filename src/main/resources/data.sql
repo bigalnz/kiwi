@@ -27,9 +27,6 @@ INSERT INTO TRANSMITTER (task_id, health_check_id, channel, comment, finish, sta
 VALUES (2,1, '50', 'test', '2023-06-01 13:00:00', '2023-06-01 12:45:00', 'ATTACHED', '1.5' ),
        (3, 2, '51', 'test', '2023-07-01 14:45:00', '2023-07-01 15:14:13', 'REPLACED', '-2.0' );
 
-INSERT INTO TRANSMITTER (channel, comment, finish, start, transmitter_task_type)
-VALUES ('47', 'test', '2023-06-01 13:00:00', '2023-06-01 12:45:00', 'UNATTACHED');
-
 UPDATE BIRD SET
  current_transmitter_id = '3',
  current_pit_id = '4'

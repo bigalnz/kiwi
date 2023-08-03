@@ -29,9 +29,10 @@ public class PITController {
                 .body(pitService.findById(id));
     }
 
-// SAVE ONE PIT
-    @PostMapping(value = "/", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    PIT newPIT(@RequestBody PIT pit) {
-        return pitService.savePIT(pit);
+// SAVE ONE PIT WITH POST
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+    ResponseEntity<PIT> newPIT(@RequestBody PIT pit) {
+        PIT createdPit = pitService.savePIT(pit);
+        return ResponseEntity.ok().body(createdPit);
     }
 }
