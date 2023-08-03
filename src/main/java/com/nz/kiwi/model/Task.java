@@ -23,4 +23,5 @@ public abstract class Task {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private HealthCheck healthCheck;
+
 }
