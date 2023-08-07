@@ -18,5 +18,5 @@ public interface BirdInfo {
 
     TransmitterInfo getCurrentTransmitter();
 
-    PITInfo getCurrentPIT();
+    PitInfo getCurrentPit();
 }

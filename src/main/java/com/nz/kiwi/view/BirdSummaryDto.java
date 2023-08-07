@@ -2,27 +2,27 @@ package com.nz.kiwi.view;
 
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
-import com.nz.kiwi.model.PIT;
+import com.nz.kiwi.model.Pit;
 import com.nz.kiwi.model.Transmitter;
 
-public class BirdSummaryDTO {
+public class BirdSummaryDto {
 
     private String name;
     private Sex sex;
     private Status status;
     private Transmitter currentTransmitter;
-    private PIT currentPIT;
+    private Pit currentPit;
 
-    public BirdSummaryDTO() {
+    public BirdSummaryDto() {
 
     }
 
-    public BirdSummaryDTO(String name, Sex sex, Status status, Transmitter currentTransmitter, PIT currentPIT) {
+    public BirdSummaryDto(String name, Sex sex, Status status, Transmitter currentTransmitter, Pit currentPit) {
         this.name = name;
         this.sex = sex;
         this.status = status;
         this.currentTransmitter = currentTransmitter;
-        this.currentPIT = currentPIT;
+        this.currentPit = currentPit;
     }
 
     public Transmitter getCurrentTransmitter() {
@@ -40,7 +40,7 @@ public class BirdSummaryDTO {
         return status;
     }
 
-    public PIT getCurrentPIT() {
-        return currentPIT;
+    public Pit getCurrentPIT() {
+        return currentPit;
     }
 }

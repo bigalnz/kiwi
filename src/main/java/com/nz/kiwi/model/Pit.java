@@ -9,15 +9,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
-import java.util.Date;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PIT extends Task {
+public class Pit extends Task {
 
     @Column(unique = true)
     @NotEmpty(message = "Name must not be null or empty")

@@ -6,13 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
-public class Measurements extends Task {
+public class LengthMeasurements extends Task {
 
     private Double beakLength;
     private Double tarsusLength;

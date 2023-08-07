@@ -1,9 +1,7 @@
 package com.nz.kiwi.controller;
 
-import com.nz.kiwi.implementation.HealthCheckServiceImpl;
 import com.nz.kiwi.implementation.MeasurementsServiceImpl;
-import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.model.Measurements;
+import com.nz.kiwi.model.LengthMeasurements;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +22,7 @@ public class MeasurementsController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Measurements>> findMeasure(@PathVariable Long id) {
+    public ResponseEntity<Optional<LengthMeasurements>> findMeasure(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
                 .body(measurementsService.getMeasurements(id));

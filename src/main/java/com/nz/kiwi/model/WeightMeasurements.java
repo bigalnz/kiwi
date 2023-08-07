@@ -6,16 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.AUTO;
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Weight extends Task {
+public class WeightMeasurements extends Task {
 
-    private Double measurement;
+    private Double weight;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private HealthCheck healthCheck;

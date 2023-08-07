@@ -1,9 +1,24 @@
+buildscript {
+	repositories { jcenter() }
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.16.RELEASE"
+		classpath 'org.springframework:springloaded:1.2.6.RELEASE'
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.6.4'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'idea'
 }
 
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
+}
 ext['h2.version'] = '1.4.197'
 
 group = 'com.nz'
@@ -20,17 +35,19 @@ repositories {
 	mavenCentral()
 }
 
-ext {
+/*ext {
 	set('azureVersion', "3.14.0")
-}
+}*/
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.azure.spring:azure-spring-boot-starter-active-directory'
+	//implementation 'com.azure.spring:azure-spring-boot-starter-active-directory'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//compileOnly 'org.springframework.boot:spring-boot-devtools'
+
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -45,13 +62,14 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
 	implementation group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.12.1'
+
 }
 
-dependencyManagement {
+/*dependencyManagement {
 	imports {
 		mavenBom "com.azure.spring:azure-spring-boot-bom:${azureVersion}"
 	}
-}
+}*/
 
 tasks.named('test') {
 	useJUnitPlatform()

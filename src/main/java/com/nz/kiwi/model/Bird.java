@@ -1,8 +1,8 @@
 package com.nz.kiwi.model;
 ;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Sex;
+import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
@@ -21,8 +21,8 @@ public class Bird {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    @Column(unique = true)
-    @NotEmpty(message = "Name must not be null or empty")
+    //@Column(unique = true)
+    //@NotEmpty(message = "Name must not be null or empty")
     private String name;
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -33,8 +33,6 @@ public class Bird {
     @Lob
     private String comment;
 
-    // Need to put optional or similar in here?
-    // Test what happens when retrieve not using a dto as pure list?
     @OneToOne(optional = true)
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "current_transmitter_id", nullable = true)
@@ -42,7 +40,7 @@ public class Bird {
 
     @OneToOne(optional = true)
     @JoinColumn(name = "current_pit_id")
-    private PIT currentPIT;
+    private Pit currentPit;
 
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")

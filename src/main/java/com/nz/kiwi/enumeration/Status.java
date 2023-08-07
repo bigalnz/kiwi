@@ -1,7 +1,7 @@
 package com.nz.kiwi.enumeration;
 
 public enum Status {
-    ALIVE("AVLIE"),
+    ALIVE("ALIVE"),
     DECEASED("DECEASED");
     private final String birdStatus;
 

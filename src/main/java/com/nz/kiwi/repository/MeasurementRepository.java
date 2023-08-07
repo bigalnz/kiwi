@@ -1,7 +1,6 @@
 package com.nz.kiwi.repository;
 
-import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.model.Measurements;
+import com.nz.kiwi.model.LengthMeasurements;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 
-public interface MeasurementRepository extends JpaRepository<Measurements, Long> {
+public interface MeasurementRepository extends JpaRepository<LengthMeasurements, Long> {
 
-    @Query("SELECT m FROM Measurements m WHERE m.healthCheck = :id")
-    Optional<Measurements> getMeasurements(@Param("id") Long id);
+    @Query("SELECT m FROM LengthMeasurements m WHERE m.healthCheck = :id")
+    Optional<LengthMeasurements> getMeasurements(@Param("id") Long id);
 
     }

@@ -1,7 +1,9 @@
 package com.nz.kiwi.service;
+import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdInfo;
-import com.nz.kiwi.view.BirdSummaryDTO;
+import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
+import com.nz.kiwi.view.BirdTestDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +19,11 @@ public interface BirdService {
 
     Optional<Bird> getBirdWithPIT(Long id);
 
-    Optional<BirdSummaryDTO> findBirdDTO(Long id);
+    //Optional<BirdTestDto> findBirdDetailsDto(Long id);
 
-    List<BirdSummaryDTO> listBirdDTO();
+    Optional<BirdSummaryDto> findBirdDTO(Long id);
+
+    List<BirdSummaryDto> listBirdDTO();
+
+    //Optional<BirdTestDto> testBirdTestDto(Long id);
 }

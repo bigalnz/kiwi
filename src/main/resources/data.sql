@@ -14,7 +14,7 @@ VALUES ('2023-06-01 13:00:00', '2026-06-01 14:00:00', 1),
 VALUES (1,1),
 (2,1);*/
 
-INSERT INTO MEASUREMENTS (task_id, health_check_id, beak_length, tarsus_depth, tarsus_length, tarsus_width)
+INSERT INTO LENGTH_MEASUREMENTS (task_id, health_check_id, beak_length, tarsus_depth, tarsus_length, tarsus_width)
 VALUES (5, 1, '98.0', '9.8', '45.0', '6.3'),
 (6,1, '98.4', '9.5', '44.3', '5.5'),
 (7,1, '98.2', '9.8', '44.1', '5.7');

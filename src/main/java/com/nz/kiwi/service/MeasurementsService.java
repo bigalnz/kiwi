@@ -1,11 +1,10 @@
 package com.nz.kiwi.service;
-import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.model.Measurements;
+import com.nz.kiwi.model.LengthMeasurements;
 
 import java.util.Optional;
 
 public interface MeasurementsService {
 
-    Optional<Measurements> getMeasurements(Long id);
+    Optional<LengthMeasurements> getMeasurements(Long id);
 
 }

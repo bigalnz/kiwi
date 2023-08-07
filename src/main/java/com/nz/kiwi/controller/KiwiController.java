@@ -1,8 +1,6 @@
 package com.nz.kiwi.controller;
 
-import com.nz.kiwi.model.PIT;
-import com.nz.kiwi.view.BirdInfo;
-import com.nz.kiwi.view.BirdSummaryDTO;
+import com.nz.kiwi.view.*;
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.model.Bird;
 import lombok.RequiredArgsConstructor;
@@ -38,13 +36,13 @@ public class KiwiController {
                 .body(birdService.findBirdById(id));
     }
 
-    // GET ONE BIRD WITH BASIC FIELDS USING DTO PROJECTION
+/*    // GET ONE BIRD WITH BASIC FIELDS USING DTO PROJECTION
     @GetMapping("/dto/{id}")
-    public ResponseEntity<Optional<BirdSummaryDTO>> findDTO(@PathVariable Long id) {
+    public ResponseEntity<Optional<BirdSummaryDto>> findDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
                 .body(birdService.findBirdDTO(id));
-    }
+    }*/
 
 // GET A LIST OF BASIC BIRDS USING BIRDINFO INTERFACE
     @GetMapping("/")
@@ -54,19 +52,28 @@ public class KiwiController {
                 .body(birdService.findAllBy());
     }
 
-    // GET A LIST OF BASIC BIRDS USING BIRDDTO
+/*    // GET A LIST OF BASIC BIRDS USING BIRDDTO
     @GetMapping("/dto")
-    public ResponseEntity<List<BirdSummaryDTO>> listBirdDTO() {
+    public ResponseEntity<List<BirdSummaryDto>> listBirdDTO() {
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
                 .body(birdService.listBirdDTO());
-    }
+    }*/
 
     // SAVE ONE PIT
     @PostMapping(value = "/", consumes = {MediaType.APPLICATION_JSON_VALUE})
     Bird newBird(@RequestBody Bird bird) {
         return birdService.saveBird(bird);
     }
+
+    // GET ONE BIRD WITH EXTENDED FIELDS
+/*    @GetMapping("/detail/{id}")
+    public ResponseEntity<Optional<BirdInfoBlaze>> getKiwi(@PathVariable("id") Long id) {
+        birdViewService.findById(id);
+        return ResponseEntity.ok()
+                .header("Custom-Header", "foo")
+                .body(birdViewService.findById(id));
+    }*/
 
 /*
 

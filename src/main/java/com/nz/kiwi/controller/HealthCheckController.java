@@ -1,9 +1,7 @@
 package com.nz.kiwi.controller;
 
 import com.nz.kiwi.implementation.HealthCheckServiceImpl;
-import com.nz.kiwi.implementation.MeasurementsServiceImpl;
 import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.model.Measurements;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
