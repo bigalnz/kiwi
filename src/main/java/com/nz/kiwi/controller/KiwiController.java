@@ -67,13 +67,13 @@ public class KiwiController {
     }
 
     // GET ONE BIRD WITH EXTENDED FIELDS
-/*    @GetMapping("/detail/{id}")
-    public ResponseEntity<Optional<BirdInfoBlaze>> getKiwi(@PathVariable("id") Long id) {
-        birdViewService.findById(id);
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Optional<BirdTestDto>> getKiwi(@PathVariable("id") Long id) {
+        birdService.testBirdTestDto(id);
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
-                .body(birdViewService.findById(id));
-    }*/
+                .body(birdService.testBirdTestDto(id));
+    }
 
 /*
 

@@ -1,22 +1,25 @@
 package com.nz.kiwi.repository;
 
+import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.view.BirdTestDto;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface BirdRepository extends JpaRepository<Bird, Long> {
+
 
     @Query("SELECT b FROM Bird b JOIN FETCH b.listHealthCheck h  WHERE b.id = :id")
             Optional<Bird> getBirdwithPIT(@Param("id") Long id);
@@ -42,5 +45,7 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
             "FROM Bird b " +
             "WHERE b.id = :id")
     Optional<BirdTestDto> testBirdTestDto(@Param("id") Long id);
-    
+
+
+
 }

@@ -52,6 +52,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	//implementation group: 'com.blazebit', name: 'blaze-persistence-integration-hibernate-5.6', version: '1.6.8'
+	//implementation group: 'com.blazebit', name: 'blaze-persistence-core-api', version: '1.6.8'
+
 	implementation group: 'org.locationtech.jts', name: 'jts-core', version: '1.18.2'
 	implementation group: 'com.graphhopper.external', name: 'jackson-datatype-jts', version: '1.0-2.7'
 	implementation group: 'org.hibernate', name: 'hibernate-spatial', version: '5.6.0.Final'

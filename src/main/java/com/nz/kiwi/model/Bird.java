@@ -21,8 +21,8 @@ public class Bird {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    //@Column(unique = true)
-    //@NotEmpty(message = "Name must not be null or empty")
+    @Column(unique = true)
+    @NotEmpty(message = "Name must not be null or empty")
     private String name;
     @Enumerated(EnumType.STRING)
     private Status status;

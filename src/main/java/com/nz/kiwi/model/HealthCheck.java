@@ -36,10 +36,6 @@ public class HealthCheck {
     private LocalDateTime releaseDateTime;
     private Point location;
 
-    // Not needed - masurements are a type of task
-    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "healthCheck")
-    //private List<Measurements> measurements;
-
     @OneToOne
     @JoinColumn(name = "holder_id")
     private User holder;

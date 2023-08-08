@@ -54,13 +54,7 @@ public class BirdServiceImpl implements BirdService {
         return birdRepository.getBirdwithPIT(id);
     }
 
-/*    public Optional<BirdTestDto> findBirdDetailsDto(Long id) {
-        return birdRepository.testBirdTestDto(id);
-    };
-
     public Optional<BirdTestDto> testBirdTestDto(Long id) {
         return birdRepository.testBirdTestDto(id);
-    }*/
-
-
+    }
 }

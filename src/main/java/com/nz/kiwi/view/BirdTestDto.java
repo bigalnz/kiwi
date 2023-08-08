@@ -16,6 +16,28 @@ public class BirdTestDto implements Serializable {
     private String name;
     private Sex sex;
     private Status status;
-    private Collection<HealthCheckDto> listHealthCheckDto = new ArrayList<>();
+    private List<HealthCheck> listHealthCheckDto;
 
+    public BirdTestDto(String name, Sex sex, Status status, List<HealthCheck> listHealthCheckDto) {
+        this.name = name;
+        this.sex = sex;
+        this.status = status;
+        this.listHealthCheckDto = listHealthCheckDto;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public List<HealthCheck> getListHealthCheckDto() {
+        return listHealthCheckDto;
+    }
 }
