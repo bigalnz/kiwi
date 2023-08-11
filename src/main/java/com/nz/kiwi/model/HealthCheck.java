@@ -1,6 +1,7 @@
 package com.nz.kiwi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
 @Table(name="HEALTH_CHECK")
 public class HealthCheck {
 

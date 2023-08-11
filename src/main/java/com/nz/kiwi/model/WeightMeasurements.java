@@ -17,4 +17,11 @@ public class WeightMeasurements extends Task {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private HealthCheck healthCheck;
 
+    @Override
+    public String toString() {
+        return "WeightMeasurements{" +
+                "weight=" + weight +
+                //", healthCheck=" + healthCheck +
+                '}';
+    }
 }

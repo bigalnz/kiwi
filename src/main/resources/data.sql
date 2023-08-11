@@ -19,6 +19,10 @@ VALUES (5, 1, '98.0', '9.8', '45.0', '6.3'),
 (6,1, '98.4', '9.5', '44.3', '5.5'),
 (7,1, '98.2', '9.8', '44.1', '5.7');
 
+INSERT INTO WEIGHT_MEASUREMENTS (task_id, health_check_id, weight)
+VALUES (8, 2, '3.2'),
+    (9, 2, '3.1');
+
 INSERT INTO PIT (task_id, health_check_id, code, date_inserted)
 VALUES (1,1, 'ABC123', '2023-06-01'),
        (4, 5, 'DEF789', '2023-06-01');

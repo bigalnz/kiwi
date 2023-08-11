@@ -17,6 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
+@Table(name="bird")
 public class Bird {
     @Id
     @GeneratedValue(strategy = IDENTITY)

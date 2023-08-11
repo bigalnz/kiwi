@@ -55,6 +55,8 @@ public class BirdServiceImpl implements BirdService {
     }
 
     public Optional<BirdTestDto> testBirdTestDto(Long id) {
+        System.out.println("test");
+        Optional<BirdTestDto> test = birdRepository.testBirdTestDto(id);
         return birdRepository.testBirdTestDto(id);
     }
 }
