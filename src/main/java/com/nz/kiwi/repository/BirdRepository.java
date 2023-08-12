@@ -1,19 +1,14 @@
 package com.nz.kiwi.repository;
 
-import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.view.BirdTestDto;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
 

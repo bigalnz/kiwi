@@ -3,11 +3,10 @@ package com.nz.kiwi.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
-import static javax.persistence.GenerationType.AUTO;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data

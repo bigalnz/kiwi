@@ -1,7 +1,8 @@
 package com.nz.kiwi.controller;
 
-import com.nz.kiwi.model.BirdView;
-import com.nz.kiwi.model.BirdViewRepository;
+//import com.nz.kiwi.model.BirdView;
+//import com.nz.kiwi.model.BirdViewRepository;
+
 import com.nz.kiwi.view.*;
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.model.Bird;
@@ -22,10 +23,10 @@ public class KiwiController {
     @Autowired
     private final BirdServiceImpl birdService;
 
-    @Autowired
-    BirdViewRepository birdViewRepository;
+    //@Autowired
+    //BirdViewRepository birdViewRepository;
 
-// GET ONE BIRD WITH EXTENDED FIELDS
+    // GET ONE BIRD WITH EXTENDED FIELDS
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Bird>> find(@PathVariable Long id) {
         return ResponseEntity.ok()
@@ -71,13 +72,13 @@ public class KiwiController {
         return birdService.saveBird(bird);
     }
 
-    // GET ONE BIRD WITH EXTENDED FIELDS
+/*    // GET ONE BIRD WITH EXTENDED FIELDS
     @GetMapping("/detail/{id}")
     public ResponseEntity<BirdView> getKiwi(@PathVariable("id") Long id) {;
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")
                 .body(birdViewRepository.findById(id));
-    }
+    }*/
 
 /*
 

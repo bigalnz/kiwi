@@ -8,11 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Point;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,7 +37,7 @@ public class HealthCheck {
 
     private LocalDateTime catchDateTime;
     private LocalDateTime releaseDateTime;
-    private Point location;
+    //private Point location;
 
     @OneToOne
     @JoinColumn(name = "holder_id")

@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -17,7 +15,7 @@ import java.time.LocalDate;
 public class Pit extends Task {
 
     @Column(unique = true)
-    @NotEmpty(message = "Name must not be null or empty")
+    //@NotEmpty(message = "Name must not be null or empty")
     private String code;
     @JoinColumn(name ="date_inserted")
     @JsonFormat(pattern="yyyy-MM-dd")

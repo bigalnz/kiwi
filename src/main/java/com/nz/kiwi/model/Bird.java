@@ -4,16 +4,19 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import static javax.persistence.GenerationType.IDENTITY;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Data
@@ -23,7 +26,7 @@ public class Bird {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     @Column(unique = true)
-    @NotEmpty(message = "Name must not be null or empty")
+    @NotEmpty
     private String name;
     @Enumerated(EnumType.STRING)
     private Status status;
