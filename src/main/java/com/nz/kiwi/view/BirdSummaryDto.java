@@ -43,4 +43,15 @@ public class BirdSummaryDto {
     public Pit getCurrentPIT() {
         return currentPit;
     }
+
+    @Override
+    public String toString() {
+        return "BirdSummaryDto{" +
+                "name='" + name + '\'' +
+                ", sex=" + sex +
+                ", status=" + status +
+                ", currentTransmitter=" + currentTransmitter +
+                ", currentPit=" + currentPit +
+                '}';
+    }
 }

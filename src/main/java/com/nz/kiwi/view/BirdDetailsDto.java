@@ -12,4 +12,12 @@ public class BirdDetailsDto extends BirdSummaryDto {
     //private WeightMeasurements currentWeightMeasurements;
     //private ChickTimer currentChickTimer;
 
+
+    @Override
+    public String toString() {
+        return "BirdDetailsDto{" +
+                "currentLengthMeasurements=" + currentLengthMeasurements +
+                "name=" + this.getName() +
+                '}';
+    }
 }

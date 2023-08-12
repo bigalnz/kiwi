@@ -3,6 +3,7 @@ package com.nz.kiwi.controller;
 //import com.nz.kiwi.model.BirdView;
 //import com.nz.kiwi.model.BirdViewRepository;
 
+import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.view.*;
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.model.Bird;
@@ -22,6 +23,7 @@ public class KiwiController {
 
     @Autowired
     private final BirdServiceImpl birdService;
+
 
     //@Autowired
     //BirdViewRepository birdViewRepository;

@@ -1,33 +1,30 @@
 package com.nz.kiwi;
 
-import com.nz.kiwi.repository.WeightMeasurementsRepository;
-import com.nz.kiwi.view.WeightDto;
+
+import com.nz.kiwi.repository.BirdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import java.util.List;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class KiwiApplication implements CommandLineRunner {
+
+
+	@Autowired
+	BirdRepository birdRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(KiwiApplication.class, args);
 	}
 
-
-	@Autowired
-	WeightMeasurementsRepository weightMeasurementsRepository;
-@Override
+	@Override
 	public void run(String... args) {
 
-			System.out.println("Command Line Runner");
-			List<WeightDto> wl = weightMeasurementsRepository.getWeightMeasurementsByBirdId(1L);
-			for (WeightDto weight : wl) {
-				System.out.println("weight= " + weight.getWeight());
-	}
-		}
 
+		System.out.println("Command Line Runner");
+		/*		birdRepository.testQuery(1L);*/
+		System.out.println("Query run");
+	}
 }

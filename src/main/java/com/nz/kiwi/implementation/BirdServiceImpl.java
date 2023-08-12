@@ -8,6 +8,7 @@ import com.nz.kiwi.service.BirdService;
 import com.nz.kiwi.view.BirdTestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -21,6 +22,10 @@ public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
 
+
+    /*    public Optional<BirdTestDto> testQuery(Long id) {
+            return birdRepository.testQuery(id);
+        }*/
     public List<BirdInfo> findBirdById(Long id) {
         return birdRepository.findBirdById(id);
     }

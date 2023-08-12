@@ -1,9 +1,16 @@
 package com.nz.kiwi.repository;
 
+import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.view.BirdTestDto;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,16 +22,6 @@ import java.util.Optional;
 @Repository
 public interface BirdRepository extends JpaRepository<Bird, Long> {
 
-/*    public static SessionFactory getCurrentSessionFromJPA() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-tutorial");.
-        SessionFactory factory = emf.unwrap(SessionFactory.class);
-        return factory;
-    }
-
-    Session hibernateSession = getCurrentSessionFromJPA().openSession();
-    org.hibernate.Query query = hibernateSession.createQuery("SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.name, b.sex, b.status, lm.beakLength, lm.legLength) " +
-            "FROM Bird b JOIN (SELECT l.beakLength beakLength, l.legLength legLength FROM b.healthCheck.lengthMeasurements l " +
-            "ORDER BY l.healthCheck.checkDate DESC LIMIT 1) lm");*/
 
     @Query("SELECT b FROM Bird b JOIN FETCH b.listHealthCheck h  WHERE b.id = :id")
             Optional<Bird> getBirdwithPIT(@Param("id") Long id);
@@ -51,5 +48,10 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
             "INNER JOIN b.listHealthCheck h" +
             " WHERE b.id = :id")
     Optional<BirdTestDto> testBirdTestDto(@Param("id") Long id);
+
+/*    @Query("SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.name, b.sex, b.status, lm.beakLength, lm.legLength) " +
+            "FROM Bird b JOIN (SELECT l.beakLength beakLength, l.tarsusLength tarsusLength FROM b.healthCheck.lengthMeasurements l " +
+            "WHERE b.id = :id ORDER BY l.healthCheck.catchDate DESC LIMIT 1) lm";)
+    Optional<BirdTestDto> testQuery(@Param("id") Long id);*/
 
 }
