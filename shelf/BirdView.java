@@ -10,6 +10,8 @@ import java.util.List;
 
 @EntityView(Bird.class)
 public interface BirdView {
+
+    //test
     @IdMapping
     Long getId();
 
