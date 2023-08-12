@@ -37,7 +37,7 @@ public class HealthCheck {
 
     private LocalDateTime catchDateTime;
     private LocalDateTime releaseDateTime;
-    //private Point location;
+    private Point location;
 
     @OneToOne
     @JoinColumn(name = "holder_id")

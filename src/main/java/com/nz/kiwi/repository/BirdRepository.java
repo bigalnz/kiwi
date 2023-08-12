@@ -37,7 +37,7 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
 
     // USING ONE BIRDSUMMARY DTO
     @Query("SELECT NEW com.nz.kiwi.view.BirdSummaryDto(b.name, b.sex, b.status, b.currentTransmitter, b.currentPit) FROM Bird b WHERE b.id = :id")
-    Optional<BirdSummaryDto> findBirdDTO(Long id);
+    BirdSummaryDto findBirdDTO(Long id);
 
     // USING LIST BIRDSUMMARY DTO
     @Query("SELECT NEW com.nz.kiwi.view.BirdSummaryDto(b.name, b.sex, b.status, b.currentTransmitter, b.currentPit) " +

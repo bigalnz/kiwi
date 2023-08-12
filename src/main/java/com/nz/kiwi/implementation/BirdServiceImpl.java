@@ -1,15 +1,15 @@
 package com.nz.kiwi.implementation;
 
-import com.nz.kiwi.view.BirdInfo;
-import com.nz.kiwi.view.BirdSummaryDto;
+import com.nz.kiwi.repository.HealthCheckRepository;
+import com.nz.kiwi.view.*;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.service.BirdService;
-import com.nz.kiwi.view.BirdTestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +20,13 @@ import java.util.Optional;
 public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
+    private final HealthCheckRepository healthCheckRepository;
 
     public List<BirdInfo> findBirdById(Long id) {
         return birdRepository.findBirdById(id);
     }
 
-    public Optional<BirdSummaryDto> findBirdDTO(Long id) {
+    public BirdSummaryDto findBirdDTO(Long id) {
         return birdRepository.findBirdDTO(id);
     }
 
@@ -57,4 +58,14 @@ public class BirdServiceImpl implements BirdService {
         Optional<BirdTestDto> test = birdRepository.testBirdTestDto(id);
         return birdRepository.testBirdTestDto(id);
     }
+
+    // CREATE BIRD DETAILS DTO FROM QUERIES
+    public BirdDetailsDto getBirdDetailsDto(Long id) {
+        BirdDetailsDto birdDetailsDto = new BirdDetailsDto();
+        birdDetailsDto.setBird(birdRepository.findBirdDTO(id));
+        birdDetailsDto.setMostRecentHealthCheck(healthCheckRepository.getHealthCheckDtoByBirdId(id).getCatchDateTime());
+        return birdDetailsDto;
+    }
+
+
 }

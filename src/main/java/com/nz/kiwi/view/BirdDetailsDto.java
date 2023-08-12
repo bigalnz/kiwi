@@ -2,14 +2,22 @@ package com.nz.kiwi.view;
 
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
-import com.nz.kiwi.model.ChickTimer;
-import com.nz.kiwi.model.LengthMeasurements;
-import com.nz.kiwi.model.WeightMeasurements;
+import com.nz.kiwi.model.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class BirdDetailsDto extends BirdSummaryDto {
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-    private LengthMeasurements currentLengthMeasurements;
-    //private WeightMeasurements currentWeightMeasurements;
-    //private ChickTimer currentChickTimer;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class BirdDetailsDto {
+
+    BirdSummaryDto bird;
+    LocalDateTime mostRecentHealthCheck;
 
 }

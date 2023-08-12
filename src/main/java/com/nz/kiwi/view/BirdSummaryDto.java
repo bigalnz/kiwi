@@ -25,9 +25,30 @@ public class BirdSummaryDto {
         this.currentPit = currentPit;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setCurrentTransmitter(Transmitter currentTransmitter) {
+        this.currentTransmitter = currentTransmitter;
+    }
+
+    public void setCurrentPit(Pit currentPit) {
+        this.currentPit = currentPit;
+    }
+
     public Transmitter getCurrentTransmitter() {
         return currentTransmitter;
     }
+
     public String getName() {
         return name;
     }

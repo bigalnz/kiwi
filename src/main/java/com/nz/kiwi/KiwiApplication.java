@@ -1,5 +1,6 @@
 package com.nz.kiwi;
 
+import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.repository.WeightMeasurementsRepository;
 import com.nz.kiwi.view.WeightDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,13 @@ public class KiwiApplication implements CommandLineRunner {
 
 
 	@Autowired
-	WeightMeasurementsRepository weightMeasurementsRepository;
+	BirdServiceImpl birdService;
 @Override
 	public void run(String... args) {
 
-			System.out.println("Command Line Runner");
-			List<WeightDto> wl = weightMeasurementsRepository.getWeightMeasurementsByBirdId(1L);
-			for (WeightDto weight : wl) {
-				System.out.println("weight= " + weight.getWeight());
-	}
-		}
+	System.out.println("Command Line Runner");
+	birdService.getBirdDetailsDto(1L);
+	System.out.println("Stop here");
+}
 
 }
