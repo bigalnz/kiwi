@@ -34,7 +34,7 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
 
     // USING ONE BIRDSUMMARY DTO
     @Query("SELECT NEW com.nz.kiwi.view.BirdSummaryDto(b.name, b.sex, b.status, b.currentTransmitter, b.currentPit) FROM Bird b WHERE b.id = :id")
-    Optional<BirdSummaryDto> findBirdDTO(Long id);
+    BirdSummaryDto findBirdSummaryDTO(Long id);
 
     // USING LIST BIRDSUMMARY DTO
     @Query("SELECT NEW com.nz.kiwi.view.BirdSummaryDto(b.name, b.sex, b.status, b.currentTransmitter, b.currentPit) " +
@@ -48,10 +48,5 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
             "INNER JOIN b.listHealthCheck h" +
             " WHERE b.id = :id")
     Optional<BirdTestDto> testBirdTestDto(@Param("id") Long id);
-
-/*    @Query("SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.name, b.sex, b.status, lm.beakLength, lm.legLength) " +
-            "FROM Bird b JOIN (SELECT l.beakLength beakLength, l.tarsusLength tarsusLength FROM b.healthCheck.lengthMeasurements l " +
-            "WHERE b.id = :id ORDER BY l.healthCheck.catchDate DESC LIMIT 1) lm";)
-    Optional<BirdTestDto> testQuery(@Param("id") Long id);*/
 
 }

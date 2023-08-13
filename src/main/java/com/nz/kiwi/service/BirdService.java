@@ -24,7 +24,7 @@ public interface BirdService {
 
     //Optional<BirdTestDto> findBirdDetailsDto(Long id);
 
-    Optional<BirdSummaryDto> findBirdDTO(Long id);
+    BirdSummaryDto findBirdSummaryDTO(Long id);
 
     List<BirdSummaryDto> listBirdDTO();
 

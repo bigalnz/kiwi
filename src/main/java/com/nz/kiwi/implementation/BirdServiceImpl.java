@@ -1,5 +1,6 @@
 package com.nz.kiwi.implementation;
 
+import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
@@ -21,17 +22,23 @@ import java.util.Optional;
 public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
+    private final LengthMeasurementsServiceImpl lengthMeasurementsService;
+    private final WeightMeasurementsServiceImpl weightMeasurementsService;
 
 
-    /*    public Optional<BirdTestDto> testQuery(Long id) {
-            return birdRepository.testQuery(id);
-        }*/
+    public BirdDetailsDto getBirdDetailsDtoById(Long id) {
+        BirdDetailsDto birdDetailsDto = new BirdDetailsDto(this.findBirdSummaryDTO(id));
+        birdDetailsDto.setCurrentLengthMeasurements(lengthMeasurementsService.getNewestLengthsByBirdId(id));
+        birdDetailsDto.setCurrentWeightMeasurements(weightMeasurementsService.getNewestWeightsByBirdId(id));
+        return birdDetailsDto;
+    }
+
     public List<BirdInfo> findBirdById(Long id) {
         return birdRepository.findBirdById(id);
     }
 
-    public Optional<BirdSummaryDto> findBirdDTO(Long id) {
-        return birdRepository.findBirdDTO(id);
+    public BirdSummaryDto findBirdSummaryDTO(Long id) {
+        return birdRepository.findBirdSummaryDTO(id);
     }
 
     public List<BirdSummaryDto> listBirdDTO() {

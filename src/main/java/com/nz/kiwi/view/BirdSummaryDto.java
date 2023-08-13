@@ -7,11 +7,11 @@ import com.nz.kiwi.model.Transmitter;
 
 public class BirdSummaryDto {
 
-    private String name;
-    private Sex sex;
-    private Status status;
-    private Transmitter currentTransmitter;
-    private Pit currentPit;
+    public String name;
+    public Sex sex;
+    public Status status;
+    public Transmitter currentTransmitter;
+    public Pit currentPit;
 
     public BirdSummaryDto() {
 
@@ -25,9 +25,14 @@ public class BirdSummaryDto {
         this.currentPit = currentPit;
     }
 
+    public BirdSummaryDto(BirdSummaryDto birdSummaryDto) {
+
+    }
+
     public Transmitter getCurrentTransmitter() {
         return currentTransmitter;
     }
+
     public String getName() {
         return name;
     }
