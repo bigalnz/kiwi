@@ -16,22 +16,27 @@ VALUES (1,1),
 
 INSERT INTO LENGTH_MEASUREMENTS (task_id, health_check_id, beak_length, tarsus_depth, tarsus_length, tarsus_width)
 VALUES (5, 1, '98.0', '9.8', '45.0', '6.3'),
-(6,1, '98.4', '9.5', '44.3', '5.5'),
-(7,1, '98.2', '9.8', '44.1', '5.7');
+       (6, 1, '98.4', '9.5', '44.3', '5.5'),
+       (7, 1, '98.2', '9.8', '44.1', '5.7'),
+       (8, 5, '66', '15', '30', '7'),
+       (9, 3, '99.2', '10.8', '45.1', '6.7'),
+       (10, 3, '99.3', '10.9', '45.2', '7.8');
 
 INSERT INTO WEIGHT_MEASUREMENTS (task_id, health_check_id, weight)
 VALUES (8, 2, '3.2'),
-    (9, 2, '3.1');
+       (9, 3, '3.1'),
+       (10, 3, '3.05');
 
 INSERT INTO PIT (task_id, health_check_id, code, date_inserted)
-VALUES (1,1, 'ABC123', '2023-06-01'),
+VALUES (1, 1, 'ABC123', '2023-06-01'),
        (4, 5, 'DEF789', '2023-06-01');
 
 INSERT INTO TRANSMITTER (task_id, health_check_id, channel, comment, finish, start, transmitter_task_type, tuning)
-VALUES (2,1, '50', 'test', '2023-06-01 13:00:00', '2023-06-01 12:45:00', 'ATTACHED', '1.5' ),
-       (3, 2, '51', 'test', '2023-07-01 14:45:00', '2023-07-01 15:14:13', 'REPLACED', '-2.0' );
+VALUES (2, 1, '50', 'test', '2023-06-01 13:00:00', '2023-06-01 12:45:00', 'ATTACHED', '1.5'),
+       (3, 2, '51', 'test', '2023-07-01 14:45:00', '2023-07-01 15:14:13', 'REPLACED', '-2.0');
 
-UPDATE BIRD SET
+UPDATE BIRD
+SET
  current_transmitter_id = '3',
  current_pit_id = '4'
 WHERE

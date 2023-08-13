@@ -1,9 +1,8 @@
 package com.nz.kiwi.implementation;
 
-import com.nz.kiwi.model.WeightMeasurements;
 import com.nz.kiwi.repository.WeightMeasurementsRepository;
 import com.nz.kiwi.service.WeightMeasurementsService;
-import com.nz.kiwi.view.WeightDto;
+import com.nz.kiwi.view.WeightMeasurementsDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,10 +16,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WeightMeasurementsServiceImpl implements WeightMeasurementsService {
 
-    private final WeightMeasurementsRepository  weightMeasurementsRepository;
+    private final WeightMeasurementsRepository weightMeasurementsRepository;
 
-    public List<WeightDto> getWeightMeasurementsByBirdId(Long id) {
-        return weightMeasurementsRepository.getWeightMeasurementsByBirdId(id);
-    };
+    public WeightMeasurementsDto getNewestWeightsByBirdId(Long id) {
+        return weightMeasurementsRepository.getNewestWeightsByBirdId(id);
+    }
+
+    ;
 
 }

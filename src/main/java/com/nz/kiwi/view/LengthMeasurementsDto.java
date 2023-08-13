@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * DTO for {@link LengthMeasurements}
@@ -12,22 +13,22 @@ import java.io.Serializable;
 
 @Value
 public class LengthMeasurementsDto implements Serializable {
-    HealthCheckDto healthCheck;
+    LocalDateTime checkDate;
     Double beakLength;
     Double tarsusLength;
     Double tarsusWidth;
     Double tarsusDepth;
 
-    public LengthMeasurementsDto(HealthCheckDto healthCheck, Double beakLength, Double tarsusLength, Double tarsusWidth, Double tarsusDepth) {
-        this.healthCheck = healthCheck;
+    public LengthMeasurementsDto(LocalDateTime checkDate, Double beakLength, Double tarsusLength, Double tarsusWidth, Double tarsusDepth) {
+        this.checkDate = checkDate;
         this.beakLength = beakLength;
         this.tarsusLength = tarsusLength;
         this.tarsusWidth = tarsusWidth;
         this.tarsusDepth = tarsusDepth;
     }
 
-    public HealthCheckDto getHealthCheck() {
-        return healthCheck;
+    public LocalDateTime getCheckDate() {
+        return checkDate;
     }
 
     public Double getBeakLength() {
@@ -44,5 +45,16 @@ public class LengthMeasurementsDto implements Serializable {
 
     public Double getTarsusDepth() {
         return tarsusDepth;
+    }
+
+    @Override
+    public String toString() {
+        return "LengthMeasurementsDto{" +
+                "checkDate=" + checkDate +
+                ", beakLength=" + beakLength +
+                ", tarsusLength=" + tarsusLength +
+                ", tarsusWidth=" + tarsusWidth +
+                ", tarsusDepth=" + tarsusDepth +
+                '}';
     }
 }
