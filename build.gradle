@@ -51,14 +51,11 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
 
-
-	implementation 'com.blazebit:blaze-persistence-entity-view-api:1.6.9'
-	implementation 'com.blazebit:blaze-persistence-integration-spring-data-base:1.6.9'
-	implementation group: 'com.blazebit', name: 'blaze-persistence-integration-spring-data-webmvc', version: '1.6.9'
+	implementation 'com.blazebit:blaze-persistence-entity-view-api-jakarta:1.6.9'
+	implementation group: 'com.blazebit', name: 'blaze-persistence-integration-spring-data-webmvc-jakarta', version: '1.6.9'
 	implementation group: 'com.blazebit', name: 'blaze-persistence-integration-spring-data-3.1', version: '1.6.9'
 	implementation group: 'com.blazebit', name: 'blaze-persistence-integration-hibernate-6.2', version: '1.6.9'
 	implementation group: 'com.blazebit', name: 'blaze-persistence-core-api-jakarta', version: '1.6.9'
