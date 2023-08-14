@@ -4,9 +4,7 @@ package com.nz.kiwi;
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.implementation.LengthMeasurementsServiceImpl;
 import com.nz.kiwi.implementation.WeightMeasurementsServiceImpl;
-import com.nz.kiwi.repository.BirdRepository;
-import com.nz.kiwi.repository.LengthMeasurementRepository;
-import com.nz.kiwi.repository.WeightMeasurementsRepository;
+import com.nz.kiwi.repository.*;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.LengthMeasurementsDto;
 import com.nz.kiwi.view.WeightMeasurementsDto;
@@ -32,6 +30,9 @@ public class KiwiApplication implements CommandLineRunner {
     @Autowired
     BirdServiceImpl birdService;
 
+    @Autowired
+    CustomBirdRepository customBirdRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(KiwiApplication.class, args);
     }
@@ -48,6 +49,8 @@ public class KiwiApplication implements CommandLineRunner {
 		System.out.println(wmdto.toString());*/
         System.out.println("Query run");
         BirdDetailsDto bdto = birdService.getBirdDetailsDtoById(1L);
+        Object newobject = customBirdRepository.customQuery(1L);
+
         System.out.println(bdto.toString());
 
     }
