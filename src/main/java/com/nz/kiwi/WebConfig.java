@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-//@EnableBlazeRepositories
+@EnableBlazeRepositories
 public class WebConfig implements WebMvcConfigurer {
 
         @Override

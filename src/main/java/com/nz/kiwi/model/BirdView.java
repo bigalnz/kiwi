@@ -1,4 +1,4 @@
-package com.nz.kiwi.repository;
+package com.nz.kiwi.model;
 
 import com.blazebit.persistence.view.EntityView;
 import com.blazebit.persistence.view.IdMapping;
