@@ -11,7 +11,14 @@ import java.time.LocalDateTime;
  */
 @Value
 public class HealthCheckDto implements Serializable {
-    Long id;
-    BirdDto bird;
+
     LocalDateTime catchDateTime;
+
+    public HealthCheckDto(LocalDateTime catchDateTime) {
+        this.catchDateTime = catchDateTime;
+    }
+
+    public LocalDateTime getCatchDateTime() {
+        return catchDateTime;
+    }
 }
