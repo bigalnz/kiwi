@@ -59,6 +59,7 @@ dependencies {
 	implementation group: 'com.blazebit', name: 'blaze-persistence-core-api-jakarta', version: '1.6.9'
 	runtimeOnly group: 'com.blazebit', name: 'blaze-persistence-core-impl-jakarta', version: '1.6.9'
 
+
 	//implementation group: 'org.locationtech.jts', name: 'jts-core', version: '1.19.0'
 
 	// https://mvnrepository.com/artifact/org.geolatte/geolatte-geom
