@@ -61,7 +61,6 @@ dependencies {
 
 
 	//implementation group: 'org.locationtech.jts', name: 'jts-core', version: '1.19.0'
-
 	// https://mvnrepository.com/artifact/org.geolatte/geolatte-geom
 	implementation group: 'org.geolatte', name: 'geolatte-geom', version: '1.9.0'
 	// https://mvnrepository.com/artifact/org.geolatte/geolatte-geojson
