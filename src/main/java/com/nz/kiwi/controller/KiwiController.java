@@ -3,29 +3,23 @@ package com.nz.kiwi.controller;
 //import com.nz.kiwi.model.BirdView;
 //import com.nz.kiwi.model.BirdViewRepository;
 
-import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nz.kiwi.repository.BirdRepository;
-import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
-import com.nz.kiwi.view.*;
 import com.nz.kiwi.implementation.BirdServiceImpl;
-import com.nz.kiwi.model.Bird;
+import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
+import com.nz.kiwi.view.BirdDetailsDto;
+import com.nz.kiwi.view.BirdSummaryDto;
+import com.nz.kiwi.view.HealthCheckDto;
+import com.nz.kiwi.view.Test;
 import lombok.RequiredArgsConstructor;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.crs.CoordinateReferenceSystem;
-import org.geolatte.geom.json.GeolatteGeomModule;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
-
-import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 
 @RestController
 @RequestMapping("/kiwis")
@@ -37,6 +31,9 @@ public class KiwiController {
 
     @Autowired
     private final CustomBirdRepositoryImpl customBirdRepository;
+
+    @Autowired
+    private final ObjectMapper objectMapper;
 
 
     @GetMapping("/")
@@ -69,15 +66,21 @@ public class KiwiController {
                 .body(customBirdRepository.customQuery4(id));
     }
 
-    @GetMapping(value = "/custom5/{id}", produces = "application/json")
-    public ResponseEntity<HealthCheckDto> BirdSummaryDTOCustom5(@PathVariable Long id) {
-        HealthCheckDto hcDto = customBirdRepository.customQuery5(id);
-        System.out.println("wait");
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .header("Custom-Header", "birdApp")
-                .body(customBirdRepository.customQuery5(id));
+    @GetMapping(value = "/custom5/{id}")
+    public ResponseEntity<?> BirdSummaryDTOCustom5(@PathVariable Long id) throws JsonProcessingException {
+        HealthCheckDto healthCheckDto = customBirdRepository.customQuery5(id);
+        String json = this.objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(healthCheckDto);
+        ResponseEntity<?> ok = ResponseEntity.ok(json);
+        return ok;
     }
+
+    @GetMapping(value = "/custom6/{id}")
+    public ResponseEntity<?> BirdSummaryDTOCustom6(@PathVariable Long id) throws JsonProcessingException {
+        HealthCheckDto healthCheckDto = customBirdRepository.customQuery5(id);
+        ResponseEntity<?> ok = ResponseEntity.ok(healthCheckDto);
+        return ok;
+    }
+
 
 /*
     // GET ONE BIRD WITH EXTENDED FIELDS

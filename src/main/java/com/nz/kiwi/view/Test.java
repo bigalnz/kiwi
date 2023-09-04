@@ -1,14 +1,9 @@
 package com.nz.kiwi.view;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nz.kiwi.model.HealthCheck;
-import lombok.*;
-import org.geolatte.geom.json.GeolatteGeomModule;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Imported;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor

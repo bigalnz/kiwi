@@ -1,7 +1,6 @@
 package com.nz.kiwi.view;
 
 import com.nz.kiwi.model.LengthMeasurements;
-import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.io.Serializable;

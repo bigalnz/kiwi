@@ -1,7 +1,8 @@
 package com.nz.kiwi.service;
+
+import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
-import com.nz.kiwi.model.Bird;
 
 import java.util.List;
 import java.util.Optional;

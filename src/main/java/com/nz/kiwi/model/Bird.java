@@ -1,22 +1,22 @@
 package com.nz.kiwi.model;
-;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.*;
+import static jakarta.persistence.GenerationType.SEQUENCE;
+
+;
 
 @Entity
 @Data

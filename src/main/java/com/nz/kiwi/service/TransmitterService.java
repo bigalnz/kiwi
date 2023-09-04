@@ -1,7 +1,5 @@
 package com.nz.kiwi.service;
 
-import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.model.Pit;
 import com.nz.kiwi.model.Transmitter;
 
 import java.util.Optional;
