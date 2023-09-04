@@ -1,30 +1,42 @@
 package com.nz.kiwi.model;
 
+import com.bedatadriven.jackson.datatype.jts.serialization.GeometryDeserializer;
+import com.bedatadriven.jackson.datatype.jts.serialization.GeometrySerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.locationtech.jts.geom.Point;
 
 import jakarta.persistence.*;
+import lombok.ToString;
+import org.geolatte.geom.*;
+
+import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
+//import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
-@Table(name="HEALTH_CHECK")
+@SequenceGenerator(name = "health_check_seq", sequenceName = "HEALTH_CHECK_SEQ", initialValue = 100, allocationSize = 50)
+@Table(name = "HEALTH_CHECK")
 public class HealthCheck {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE, generator = "health_check_seq")
     private Long id;
 
     @JsonManagedReference
@@ -32,18 +44,49 @@ public class HealthCheck {
     private Bird bird;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy="healthCheck")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "healthCheck")
     private List<Task> tasks;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime catchDateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime releaseDateTime;
-    private Point location;
 
-    @OneToOne
+    @JsonBackReference
+    private Point<G2D> location;
+
+    @ManyToOne
     @JoinColumn(name = "holder_id")
     private User holder;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "measurer_id")
     private User measurer;
+
+    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, User holder, User measurer) {
+        this.bird = bird;
+        this.catchDateTime = catchDateTime;
+        this.releaseDateTime = releaseDateTime;
+        this.holder = holder;
+        this.measurer = measurer;
+    }
+
+    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, User holder, User measurer) {
+        this.bird = bird;
+        this.catchDateTime = catchDateTime;
+        this.releaseDateTime = releaseDateTime;
+        this.location = location;
+        this.holder = holder;
+        this.measurer = measurer;
+    }
+
+    public HealthCheck(Long id, Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, User holder, User measurer) {
+        this.id = id;
+        this.bird = bird;
+        this.catchDateTime = catchDateTime;
+        this.releaseDateTime = releaseDateTime;
+        this.location = location;
+        this.holder = holder;
+        this.measurer = measurer;
+    }
 
 }

@@ -6,10 +6,8 @@ import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.service.BirdService;
-import com.nz.kiwi.view.BirdTestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -26,12 +24,10 @@ public class BirdServiceImpl implements BirdService {
     private final WeightMeasurementsServiceImpl weightMeasurementsService;
 
 
-    public BirdDetailsDto getBirdDetailsDtoById(Long id) {
-        BirdDetailsDto birdDetailsDto = new BirdDetailsDto(this.findBirdSummaryDTO(id));
-        birdDetailsDto.setCurrentLengthMeasurements(lengthMeasurementsService.getNewestLengthsByBirdId(id));
-        birdDetailsDto.setCurrentWeightMeasurements(weightMeasurementsService.getNewestWeightsByBirdId(id));
+/*    public BirdDetailsDto getBirdDetailsDtoById(Long id) {
+        BirdDetailsDto birdDetailsDto =
         return birdDetailsDto;
-    }
+    }*/
 
     public List<BirdInfo> findBirdById(Long id) {
         return birdRepository.findBirdById(id);
@@ -41,9 +37,9 @@ public class BirdServiceImpl implements BirdService {
         return birdRepository.findBirdSummaryDTO(id);
     }
 
-    public List<BirdSummaryDto> listBirdDTO() {
-        List<BirdSummaryDto> test = birdRepository.listBirdDTO();
-        return birdRepository.listBirdDTO();
+    public List<BirdSummaryDto> listBirdSummaryDTO() {
+        List<BirdSummaryDto> test = birdRepository.listBirdSummaryDTO();
+        return birdRepository.listBirdSummaryDTO();
     }
 
     public List<BirdInfo> findAllBy() {
@@ -64,9 +60,5 @@ public class BirdServiceImpl implements BirdService {
         return birdRepository.getBirdwithPIT(id);
     }
 
-    public Optional<BirdTestDto> testBirdTestDto(Long id) {
-        System.out.println("test");
-        Optional<BirdTestDto> test = birdRepository.testBirdTestDto(id);
-        return birdRepository.testBirdTestDto(id);
-    }
+
 }

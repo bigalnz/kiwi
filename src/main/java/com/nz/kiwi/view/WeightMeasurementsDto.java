@@ -8,16 +8,16 @@ import java.time.LocalDateTime;
 @Value
 public class WeightMeasurementsDto implements Serializable {
 
-    LocalDateTime checkDate;
+    LocalDateTime weightCheckDate;
     Double weight;
 
-    public WeightMeasurementsDto(LocalDateTime checkDate, Double weight) {
-        this.checkDate = checkDate;
+    public WeightMeasurementsDto(LocalDateTime weightCheckDate, Double weight) {
+        this.weightCheckDate = weightCheckDate;
         this.weight = weight;
     }
 
-    public LocalDateTime getCheckDate() {
-        return checkDate;
+    public LocalDateTime getWeightCheckDate() {
+        return weightCheckDate;
     }
 
     public Double getWeight() {
@@ -27,7 +27,7 @@ public class WeightMeasurementsDto implements Serializable {
     @Override
     public String toString() {
         return "WeightDto{" +
-                "checkDate=" + checkDate +
+                "checkDate=" + weightCheckDate +
                 ", weight=" + weight +
                 '}';
     }

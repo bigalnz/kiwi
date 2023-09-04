@@ -26,4 +26,8 @@ public class PitServiceImpl implements PitService {
     public Pit savePIT(Pit pit) {
         return pitRepository.save(pit);
     }
+
+    public Pit save(Pit pit) {
+        return pitRepository.save(pit);
+    }
 }

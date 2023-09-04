@@ -16,14 +16,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.*;
 
 @Entity
 @Data
-@Table(name="bird")
+@SequenceGenerator(name = "bird_seq", sequenceName = "BIRD_SEQ", initialValue = 100, allocationSize = 50)
+@Table(name = "bird")
 public class Bird {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE, generator = "bird_seq")
     private Long id;
     @Column(unique = true)
     @NotEmpty
@@ -50,7 +51,14 @@ public class Bird {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<HealthCheck> listHealthCheck = new ArrayList<>();
 
-    public Bird(){};
+    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
+    private List<ChickTimer> listChickTimer = new ArrayList<>();
+
+    public Bird() {
+    }
+
+    ;
 
     public Bird(Long id, String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, List<HealthCheck> listHealthCheck) {
         this.id = id;
@@ -61,7 +69,28 @@ public class Bird {
         this.taxa = taxa;
         this.comment = comment;
         this.listHealthCheck = listHealthCheck;
+    }
 
+    public Bird(Long id, String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, Transmitter currentTransmitter, Pit currentPit, List<HealthCheck> listHealthCheck, List<ChickTimer> listChickTimer) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+        this.dateDeceased = dateDeceased;
+        this.sex = sex;
+        this.taxa = taxa;
+        this.comment = comment;
+        this.currentTransmitter = currentTransmitter;
+        this.currentPit = currentPit;
+        this.listHealthCheck = listHealthCheck;
+        this.listChickTimer = listChickTimer;
+    }
+
+    public Bird(String name, Status status, Sex sex, Taxa taxa, String comment) {
+        this.name = name;
+        this.status = status;
+        this.sex = sex;
+        this.taxa = taxa;
+        this.comment = comment;
     }
 
     public Bird addHealthCheck(HealthCheck healthCheck) {
@@ -132,5 +161,11 @@ public class Bird {
         this.comment = comment;
     }
 
+    public List<ChickTimer> getListChickTimer() {
+        return listChickTimer;
+    }
 
+    public void setListChickTimer(List<ChickTimer> listChickTimer) {
+        this.listChickTimer = listChickTimer;
+    }
 }

@@ -1,5 +1,6 @@
 package com.nz.kiwi.implementation;
 
+import com.nz.kiwi.model.LengthMeasurements;
 import com.nz.kiwi.repository.LengthMeasurementRepository;
 import com.nz.kiwi.service.LengthMeasurementsService;
 import com.nz.kiwi.view.LengthMeasurementsDto;
@@ -20,6 +21,7 @@ public class LengthMeasurementsServiceImpl implements LengthMeasurementsService 
         return lengthMeasurementsRepository.getNewestLengthsByBirdId(id);
     }
 
-    ;
-
+    public LengthMeasurements save(LengthMeasurements lengthMeasurements) {
+        return lengthMeasurementsRepository.save(lengthMeasurements);
+    }
 }

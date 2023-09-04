@@ -1,5 +1,6 @@
 package com.nz.kiwi.implementation;
 
+import com.nz.kiwi.model.WeightMeasurements;
 import com.nz.kiwi.repository.WeightMeasurementsRepository;
 import com.nz.kiwi.service.WeightMeasurementsService;
 import com.nz.kiwi.view.WeightMeasurementsDto;
@@ -22,6 +23,7 @@ public class WeightMeasurementsServiceImpl implements WeightMeasurementsService 
         return weightMeasurementsRepository.getNewestWeightsByBirdId(id);
     }
 
-    ;
-
+    public WeightMeasurements save(WeightMeasurements weightMeasurements) {
+        return weightMeasurementsRepository.save(weightMeasurements);
+    }
 }

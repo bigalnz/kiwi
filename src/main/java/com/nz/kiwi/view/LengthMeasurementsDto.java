@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 
 @Value
 public class LengthMeasurementsDto implements Serializable {
-    LocalDateTime checkDate;
+    LocalDateTime lengthCheckDate;
     Double beakLength;
     Double tarsusLength;
     Double tarsusWidth;
     Double tarsusDepth;
 
-    public LengthMeasurementsDto(LocalDateTime checkDate, Double beakLength, Double tarsusLength, Double tarsusWidth, Double tarsusDepth) {
-        this.checkDate = checkDate;
+    public LengthMeasurementsDto(LocalDateTime lengthCheckDate, Double beakLength, Double tarsusLength, Double tarsusWidth, Double tarsusDepth) {
+        this.lengthCheckDate = lengthCheckDate;
         this.beakLength = beakLength;
         this.tarsusLength = tarsusLength;
         this.tarsusWidth = tarsusWidth;
@@ -28,7 +28,7 @@ public class LengthMeasurementsDto implements Serializable {
     }
 
     public LocalDateTime getCheckDate() {
-        return checkDate;
+        return lengthCheckDate;
     }
 
     public Double getBeakLength() {
@@ -50,7 +50,7 @@ public class LengthMeasurementsDto implements Serializable {
     @Override
     public String toString() {
         return "LengthMeasurementsDto{" +
-                "checkDate=" + checkDate +
+                "checkDate=" + lengthCheckDate +
                 ", beakLength=" + beakLength +
                 ", tarsusLength=" + tarsusLength +
                 ", tarsusWidth=" + tarsusWidth +

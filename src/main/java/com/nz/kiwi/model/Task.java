@@ -9,19 +9,22 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import static jakarta.persistence.GenerationType.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name="TASK")
+@SequenceGenerator(name = "task_seq", sequenceName = "TASK_SEQ", initialValue = 100, allocationSize = 50)
+@Table(name = "TASK")
 public abstract class Task {
 
     @Id
+    @GeneratedValue(strategy = SEQUENCE, generator = "task_seq")
     private Long taskId;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private HealthCheck healthCheck;
-
 }

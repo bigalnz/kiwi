@@ -7,56 +7,91 @@ import com.nz.kiwi.model.Transmitter;
 
 public class BirdSummaryDto {
 
+    public Long id;
     public String name;
     public Sex sex;
     public Status status;
-    public Transmitter currentTransmitter;
-    public Pit currentPit;
+    public Integer currentTransmitterChannel;
+    public Double currentTransmitterTuning;
+    public String currentPitCode;
 
     public BirdSummaryDto() {
 
     }
 
-    public BirdSummaryDto(String name, Sex sex, Status status, Transmitter currentTransmitter, Pit currentPit) {
+    public BirdSummaryDto(Long id, String name, Sex sex, Status status, Integer currentTransmitterChannel, Double currentTransmitterTuning, String currentPitCode) {
+        this.id = id;
         this.name = name;
         this.sex = sex;
         this.status = status;
-        this.currentTransmitter = currentTransmitter;
-        this.currentPit = currentPit;
+        this.currentTransmitterChannel = currentTransmitterChannel;
+        this.currentTransmitterTuning = currentTransmitterTuning;
+        this.currentPitCode = currentPitCode;
+    }
+
+    public BirdSummaryDto(Long id, String name, Sex sex, Status status) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.status = status;
     }
 
     public BirdSummaryDto(BirdSummaryDto birdSummaryDto) {
-
     }
 
-    public Transmitter getCurrentTransmitter() {
-        return currentTransmitter;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Sex getSex() {
         return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public Status getStatus() {
         return status;
     }
 
-    public Pit getCurrentPIT() {
-        return currentPit;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "BirdSummaryDto{" +
-                "name='" + name + '\'' +
-                ", sex=" + sex +
-                ", status=" + status +
-                ", currentTransmitter=" + currentTransmitter +
-                ", currentPit=" + currentPit +
-                '}';
+    public Integer getCurrentTransmitterChannel() {
+        return currentTransmitterChannel;
+    }
+
+    public void setCurrentTransmitterChannel(Integer currentTransmitterChannel) {
+        this.currentTransmitterChannel = currentTransmitterChannel;
+    }
+
+    public Double getCurrentTransmitterTuning() {
+        return currentTransmitterTuning;
+    }
+
+    public void setCurrentTransmitterTuning(Double currentTransmitterTuning) {
+        this.currentTransmitterTuning = currentTransmitterTuning;
+    }
+
+    public String getCurrentPitCode() {
+        return currentPitCode;
+    }
+
+    public void setCurrentPitCode(String currentPitCode) {
+        this.currentPitCode = currentPitCode;
     }
 }
