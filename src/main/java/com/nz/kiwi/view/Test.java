@@ -1,25 +1,32 @@
 package com.nz.kiwi.view;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nz.kiwi.model.HealthCheck;
 import lombok.*;
-import org.geolatte.geom.json.GeolatteGeomModule;
-import org.hibernate.annotations.Imported;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
-@AllArgsConstructor
-@NoArgsConstructor
-//@ToString
-@Imported
+
 @Data
-public class Test {
+@AllArgsConstructor
+public class Test implements Serializable {
 
     public Long id;
-    public String name;
-    //@JsonFormat(pattern="yyyy-MM-dd HH:mm")
-    //public LocalDateTime healthCheckDateTime;
-    public HealthCheckDto healthCheckDto;
+    public Point<G2D> location;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Point<G2D> getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point<G2D> location) {
+        this.location = location;
+    }
 }

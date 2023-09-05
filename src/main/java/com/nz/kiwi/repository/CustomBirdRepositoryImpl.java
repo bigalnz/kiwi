@@ -96,7 +96,7 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     @Override
     public HealthCheckDto customQuery5(Long id) {
         return (HealthCheckDto) entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location) FROM HealthCheck hc " +
+                        "SELECT NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.location) FROM HealthCheck hc " +
                                 "WHERE hc.id=:id " +
                                 "GROUP BY hc ORDER BY hc.catchDateTime DESC LIMIT 1")
                 .setParameter("id", id)
