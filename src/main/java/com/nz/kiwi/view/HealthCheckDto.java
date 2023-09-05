@@ -26,8 +26,6 @@ public class HealthCheckDto implements Serializable {
         LocalDateTime catchDateTime;
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         LocalDateTime releaseDateTime;
-        //        @JsonSerialize(using = GeometrySerializer.class)
-//        @JsonDeserialize(using = GeometryDeserializer.class)
         Point<G2D> location;
         //User holder;
 

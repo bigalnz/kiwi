@@ -71,7 +71,8 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     @Override
     public Test customQuery3(Long id) {
         return (Test) entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, hc) FROM Bird b " +
+                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, " +
+                                "NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location) ) FROM Bird b " +
                                 "LEFT JOIN b.listHealthCheck hc " +
                                 "WHERE b.id=:id " +
                                 "GROUP BY b, hc ORDER BY hc.catchDateTime DESC LIMIT 1")
