@@ -1,11 +1,10 @@
 package com.nz.kiwi.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.persistence.*;
 import lombok.ToString;
 import org.geolatte.geom.G2D;
 import org.geolatte.geom.Point;

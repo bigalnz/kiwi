@@ -4,21 +4,17 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.persistence.*;
 import lombok.ToString;
-import org.geolatte.geom.*;
-
-import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
-//import org.locationtech.jts.geom.Point;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @AllArgsConstructor
