@@ -68,6 +68,8 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
                 .getSingleResult();
     }
 
+    // comment
+
     @Override
     public Test customQuery3(Long id) {
         return (Test) entityManager.createQuery(
