@@ -1,13 +1,10 @@
 package com.nz.kiwi.repository;
 
-import com.nz.kiwi.model.Bird;
-import com.nz.kiwi.view.HealthCheckDto;
-import com.nz.kiwi.view.Test;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
+import com.nz.kiwi.view.HealthCheckDto;
+import com.nz.kiwi.view.Test;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface CustomBirdRepository {

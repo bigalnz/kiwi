@@ -2,8 +2,8 @@ package com.nz.kiwi.view;
 
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
-import com.nz.kiwi.model.*;
-import lombok.AllArgsConstructor;
+import com.nz.kiwi.model.Pit;
+import com.nz.kiwi.model.Transmitter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Imported;

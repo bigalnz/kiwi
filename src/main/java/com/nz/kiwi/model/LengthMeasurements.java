@@ -1,10 +1,9 @@
 package com.nz.kiwi.model;
 
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import jakarta.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

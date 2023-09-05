@@ -1,23 +1,15 @@
 package com.nz.kiwi.view;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.nz.kiwi.model.HealthCheck;
-import lombok.*;
-import org.geolatte.geom.Geometry;
-import org.geolatte.geom.json.GeometryDeserializer;
-import org.geolatte.geom.json.GeometrySerializer;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.geolatte.geom.G2D;
 import org.geolatte.geom.Point;
 
-import static org.geolatte.geom.builder.DSL.*;
-
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * DTO for {@link HealthCheck}
@@ -34,8 +26,8 @@ public class HealthCheckDto implements Serializable {
         LocalDateTime catchDateTime;
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         LocalDateTime releaseDateTime;
-        @JsonSerialize(using = GeometrySerializer.class)
-        @JsonDeserialize(using = GeometryDeserializer.class)
+        //        @JsonSerialize(using = GeometrySerializer.class)
+//        @JsonDeserialize(using = GeometryDeserializer.class)
         Point<G2D> location;
         //User holder;
 

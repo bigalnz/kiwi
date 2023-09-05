@@ -1,10 +1,7 @@
 package com.nz.kiwi.implementation;
 
-import com.nz.kiwi.model.Pit;
 import com.nz.kiwi.model.Transmitter;
-import com.nz.kiwi.repository.PitRepository;
 import com.nz.kiwi.repository.TransmitterRepository;
-import com.nz.kiwi.service.PitService;
 import com.nz.kiwi.service.TransmitterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

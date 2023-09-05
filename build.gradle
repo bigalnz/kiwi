@@ -60,14 +60,11 @@ dependencies {
 	runtimeOnly group: 'com.blazebit', name: 'blaze-persistence-core-impl-jakarta', version: '1.6.9'
 
 
-	//implementation group: 'org.locationtech.jts', name: 'jts-core', version: '1.19.0'
-	// https://mvnrepository.com/artifact/org.geolatte/geolatte-geom
 	implementation group: 'org.geolatte', name: 'geolatte-geom', version: '1.9.0'
-	// https://mvnrepository.com/artifact/org.geolatte/geolatte-geojson
 	implementation group: 'org.geolatte', name: 'geolatte-geojson', version: '1.9.0'
 
+//	implementation group: 'com.graphhopper.external', name: 'jackson-datatype-jts', version: '1.0-2.7'
 
-	implementation group: 'com.graphhopper.external', name: 'jackson-datatype-jts', version: '1.0-2.7'
 	implementation group: 'org.hibernate.orm', name: 'hibernate-spatial', version: '6.2.6.Final'
 
 	implementation group: 'org.orbisgis', name: 'h2gis', version: '1.5.0'

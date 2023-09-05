@@ -3,29 +3,22 @@ package com.nz.kiwi.controller;
 //import com.nz.kiwi.model.BirdView;
 //import com.nz.kiwi.model.BirdViewRepository;
 
-import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nz.kiwi.repository.BirdRepository;
-import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
-import com.nz.kiwi.view.*;
 import com.nz.kiwi.implementation.BirdServiceImpl;
-import com.nz.kiwi.model.Bird;
+import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
+import com.nz.kiwi.view.BirdDetailsDto;
+import com.nz.kiwi.view.BirdSummaryDto;
+import com.nz.kiwi.view.HealthCheckDto;
+import com.nz.kiwi.view.Test;
 import lombok.RequiredArgsConstructor;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.crs.CoordinateReferenceSystem;
-import org.geolatte.geom.json.GeolatteGeomModule;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
-
-import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 
 @RestController
 @RequestMapping("/kiwis")

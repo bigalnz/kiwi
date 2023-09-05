@@ -7,12 +7,11 @@ import com.nz.kiwi.model.HealthCheck;
 import com.nz.kiwi.model.Pit;
 import com.nz.kiwi.view.PitDto;
 import com.nz.kiwi.view.PitMapper;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.persistence.EntityNotFoundException;
 
 import java.util.Optional;
 
