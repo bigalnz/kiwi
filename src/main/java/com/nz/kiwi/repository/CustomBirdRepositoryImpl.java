@@ -17,7 +17,7 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     private EntityManager entityManager;
 
 
-    /*
+    /**
      *  Query to retrieve Bird Dto with details
      * TO DO:
      * Add bird.id to query and dto
@@ -26,7 +26,6 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
      * Check query is returning correct values -
      *
      * Add chick timer / relationship to all of above - will need same test data in db
-     *
      *
      * */
     @Override
@@ -85,7 +84,7 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     @Override
     public Object customQuery4(Long id) {
         return (Object) entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, " +
+                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, b.sex, b.status, b.currentTransmitter, b.currentPit, " +
                                 "NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location)) FROM Bird b " +
                                 "LEFT JOIN HealthCheck hc ON hc.bird.id=b.id " +
                                 "WHERE b.id=:id " +
@@ -97,7 +96,7 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     @Override
     public HealthCheckDto customQuery5(Long id) {
         return (HealthCheckDto) entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.location) FROM HealthCheck hc " +
+                        "SELECT NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location) FROM HealthCheck hc " +
                                 "WHERE hc.id=:id " +
                                 "GROUP BY hc ORDER BY hc.catchDateTime DESC LIMIT 1")
                 .setParameter("id", id)

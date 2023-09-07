@@ -46,7 +46,7 @@ public class KiwiController {
                 .body(customBirdRepository.customQuery(id));
     }
 
-    @GetMapping("/custom3/{id}")
+    @GetMapping("/custom2/{id}")
     public ResponseEntity<Test> BirdSummaryDTOCustom3(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .header("Custom-Header", "foo")

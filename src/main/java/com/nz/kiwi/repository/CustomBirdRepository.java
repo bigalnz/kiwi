@@ -18,7 +18,7 @@ public interface CustomBirdRepository {
 
     Object customQuery4(Long id);
 
-    HealthCheckDto customQuery5(Long id);
+    Object customQuery5(Long id);
 
 
 }

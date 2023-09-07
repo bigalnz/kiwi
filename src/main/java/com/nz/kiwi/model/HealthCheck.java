@@ -24,7 +24,7 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
 @SequenceGenerator(name = "health_check_seq", sequenceName = "HEALTH_CHECK_SEQ", initialValue = 100, allocationSize = 50)
-@Table(name = "HEALTH_CHECK")
+@Table(name = "health_check")
 public class HealthCheck {
 
     @Id

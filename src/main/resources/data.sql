@@ -46,10 +46,9 @@ SET current_transmitter_id = '16',
     current_pit_id         = '14'
 WHERE bird.id = 1;
 
-/*UPDATE BIRD SET
- current_transmitter_id = '2',
- current_pit_id = '1'
-WHERE
-bird.id=2;*/
+UPDATE BIRD
+SET current_transmitter_id = '17',
+    current_pit_id         = '15'
+WHERE bird.id = 2;
 
 

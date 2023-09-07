@@ -25,7 +25,7 @@ import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 @Slf4j
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableEntityViews("com.nz.kiwi.model")
-public class KiwiApplication implements CommandLineRunner {
+public class KiwiApplication {
 
     @Autowired
     ChickTimerService chickTimerService;
@@ -47,7 +47,7 @@ public class KiwiApplication implements CommandLineRunner {
     }
 
 
-    @Override
+ /*   @Override
     public void run(String... args) {
 
         System.out.println("Command Line Runner");
@@ -70,5 +70,5 @@ public class KiwiApplication implements CommandLineRunner {
         chickTimerService.findAll();
         System.out.println("Command line runner");
 
-    }
+    }*/
 }
