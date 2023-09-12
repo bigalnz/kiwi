@@ -39,12 +39,12 @@ public class PitController {
     }
 
 // SAVE ONE PIT WITH POST
-    @PostMapping(value = "/")
-    ResponseEntity<PitDto> newPIT(@RequestBody PitDto pitDto) {
-        Pit createdPit = pitMapper.toEntity(pitDto);
-        HealthCheck healthCheck = healthCheckService.get(pitDto.getHealthCheckId()).orElseThrow(() -> new EntityNotFoundException("error Health CHeck Id not found"));
-        createdPit.setHealthCheck(healthCheck);
-        pitService.savePIT(createdPit);
-        return ResponseEntity.ok().body(pitDto);
-    }
+@PostMapping(value = "/")
+ResponseEntity<Pit> newPIT(@RequestBody PitDto pitDto) {
+    Pit createdPit = pitMapper.toEntity(pitDto);
+    HealthCheck healthCheck = healthCheckService.get(pitDto.getHealthCheckId()).orElseThrow(() -> new EntityNotFoundException("error Health CHeck Id not found"));
+    createdPit.setHealthCheck(healthCheck);
+    Pit savedPit = pitService.savePIT(createdPit);
+    return ResponseEntity.ok().body(savedPit);
+}
 }

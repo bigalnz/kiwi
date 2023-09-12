@@ -1,8 +1,8 @@
 package com.nz.kiwi.service;
 
-import com.nz.kiwi.model.User;
+import com.nz.kiwi.model.Person;
 
 public interface UserService {
 
-    User save(User user);
+    Person save(Person person);
 }

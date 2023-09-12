@@ -84,8 +84,12 @@ public class CustomBirdRepositoryImpl implements CustomBirdRepository {
     @Override
     public Object customQuery4(Long id) {
         return (Object) entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, b.sex, b.status, b.currentTransmitter, b.currentPit, " +
+                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, b.sex, b.status, " +
+                                "NEW com.nz.kiwi.view.TransmitterDto(t.id, t.channel, t.tuning, t.transmitterTaskType, t.comment ), " +
+                                "NEW com.nz.kiwi.view.PitDto(p.id, p.code, p.dateInserted, p.comment, p.healthCheck.id ), " +
                                 "NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location)) FROM Bird b " +
+                                "LEFT JOIN b.currentTransmitter t " +
+                                "LEFT JOIN b.currentPit p " +
                                 "LEFT JOIN HealthCheck hc ON hc.bird.id=b.id " +
                                 "WHERE b.id=:id " +
                                 "GROUP BY b, hc ORDER BY hc.catchDateTime DESC LIMIT 1")

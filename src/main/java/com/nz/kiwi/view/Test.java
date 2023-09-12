@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Imported;
+import com.nz.kiwi.view.PitDto;
+import org.springframework.data.relational.core.sql.IsNull;
 
 import java.io.Serializable;
 
@@ -21,7 +23,9 @@ public class Test implements Serializable {
     public String name;
     public Sex sex;
     public Status status;
-    public Transmitter currentTransmitter;  //if null
-    public Pit currentPit;                  // if null
+    public TransmitterDto currentTransmitterDto;
+    public PitDto currentPitDto;
     public HealthCheckDto healthCheckDto;
+
+
 }

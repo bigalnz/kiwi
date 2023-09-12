@@ -62,8 +62,8 @@ class BirdLargeTests {
         /** Create a bird, user, healthcheck - then add both to bird */
         Bird bird1 = birdRepository.save(new Bird("Octavia", Status.ALIVE, Sex.FEMALE, Taxa.BROWN_KIWI, "Unit test Octavia"));
         Bird bird2 = birdRepository.save(new Bird("Jared", Status.ALIVE, Sex.MALE, Taxa.BROWN_KIWI, "Unit test Jono"));
-        User user1 = userRepository.save(new User("Clint", "Eastwood"));
-        User user2 = userRepository.save(new User("Julia", "Roberts"));
+        Person person1 = userRepository.save(new Person("Clint", "Eastwood"));
+        Person person2 = userRepository.save(new Person("Julia", "Roberts"));
 
         Point<G2D> geolatte_location = point(WGS84, g(1744.33, -53.21));
 
@@ -72,21 +72,21 @@ class BirdLargeTests {
                 LocalDateTime.of(2020, 03, 28, 14, 33),
                 LocalDateTime.of(2020, 03, 28, 14, 55),
                 geolatte_location,
-                user1, user1)
+                person1, person1)
         );
 
         HealthCheck healthCheck2021 = healthCheckRepository.save(new HealthCheck(bird1,
                 LocalDateTime.of(2021, 03, 23, 11, 07),
                 LocalDateTime.of(2021, 03, 23, 11, 22),
                 geolatte_location,
-                user1, user1)
+                person1, person1)
         );
 
         HealthCheck healthCheck2022 = healthCheckRepository.save(new HealthCheck(bird1,
                 LocalDateTime.of(2022, 03, 22, 12, 31),
                 LocalDateTime.of(2022, 03, 22, 12, 49),
                 geolatte_location,
-                user1, user1)
+                person1, person1)
         );
 
         Transmitter transmitter2020 = transmitterRepository.save(new Transmitter(70, 1.5,

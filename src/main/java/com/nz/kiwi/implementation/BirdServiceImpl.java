@@ -51,7 +51,7 @@ public class BirdServiceImpl implements BirdService {
     }
 
     @Override
-    public Bird saveBird(Bird bird) {
+    public Bird save(Bird bird) {
         return birdRepository.save(bird);
     }
 

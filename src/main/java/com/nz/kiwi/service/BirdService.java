@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface BirdService {
 
-    Bird saveBird(Bird bird);
+    Bird save(Bird bird);
 
     List<BirdInfo> findBirdById(Long id);
 

@@ -6,7 +6,7 @@ import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -18,8 +18,12 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 
 ;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 @Entity
-@Data
 @SequenceGenerator(name = "bird_seq", sequenceName = "BIRD_SEQ", initialValue = 100, allocationSize = 50)
 @Table(name = "bird")
 public class Bird {
@@ -47,18 +51,18 @@ public class Bird {
     @JoinColumn(name = "current_pit_id")
     private Pit currentPit;
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<HealthCheck> listHealthCheck = new ArrayList<>();
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<ChickTimer> listChickTimer = new ArrayList<>();
 
-    public Bird() {
-    }
 
-    ;
+    public Bird(String name) {
+        this.name = name;
+    }
 
     public Bird(Long id, String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, List<HealthCheck> listHealthCheck) {
         this.id = id;
@@ -71,19 +75,6 @@ public class Bird {
         this.listHealthCheck = listHealthCheck;
     }
 
-    public Bird(Long id, String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, Transmitter currentTransmitter, Pit currentPit, List<HealthCheck> listHealthCheck, List<ChickTimer> listChickTimer) {
-        this.id = id;
-        this.name = name;
-        this.status = status;
-        this.dateDeceased = dateDeceased;
-        this.sex = sex;
-        this.taxa = taxa;
-        this.comment = comment;
-        this.currentTransmitter = currentTransmitter;
-        this.currentPit = currentPit;
-        this.listHealthCheck = listHealthCheck;
-        this.listChickTimer = listChickTimer;
-    }
 
     public Bird(String name, Status status, Sex sex, Taxa taxa, String comment) {
         this.name = name;
@@ -93,79 +84,5 @@ public class Bird {
         this.comment = comment;
     }
 
-    public Bird addHealthCheck(HealthCheck healthCheck) {
-        listHealthCheck.add(healthCheck);
-        healthCheck.setBird(this);
-        return this;
-    }
 
-    public Bird removeHealthCheck(HealthCheck healthCheck) {
-        listHealthCheck.remove(healthCheck);
-        healthCheck.setBird(null);
-        return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public LocalDate getDateDeceased() {
-        return dateDeceased;
-    }
-
-    public void setDateDeceased(LocalDate dateDeceased) {
-        this.dateDeceased = dateDeceased;
-    }
-
-    public Sex getSex() {
-        return sex;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
-    public Taxa getTaxa() {
-        return taxa;
-    }
-
-    public void setTaxa(Taxa taxa) {
-        this.taxa = taxa;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public List<ChickTimer> getListChickTimer() {
-        return listChickTimer;
-    }
-
-    public void setListChickTimer(List<ChickTimer> listChickTimer) {
-        this.listChickTimer = listChickTimer;
-    }
 }

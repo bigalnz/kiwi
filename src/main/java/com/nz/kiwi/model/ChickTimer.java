@@ -30,7 +30,7 @@ public class ChickTimer {
     private LocalDateTime ctDateTime;
 
     @ManyToOne
-    private User userRecorder;
+    private Person personRecorder;
 
     @ManyToOne
     @JsonManagedReference

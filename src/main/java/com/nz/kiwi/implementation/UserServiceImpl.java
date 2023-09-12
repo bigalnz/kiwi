@@ -1,6 +1,6 @@
 package com.nz.kiwi.implementation;
 
-import com.nz.kiwi.model.User;
+import com.nz.kiwi.model.Person;
 import com.nz.kiwi.repository.UserRepository;
 import com.nz.kiwi.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User save(User user) {
-        return userRepository.save(user);
+    public Person save(Person person) {
+        return userRepository.save(person);
     }
 }

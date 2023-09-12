@@ -33,6 +33,7 @@ public class HealthCheck {
 
     @JsonManagedReference
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "bird_id")
     private Bird bird;
 
     @JsonManagedReference
@@ -49,12 +50,12 @@ public class HealthCheck {
 
     @ManyToOne
     @JoinColumn(name = "holder_id")
-    private User holder;
+    private Person holder;
     @ManyToOne
     @JoinColumn(name = "measurer_id")
-    private User measurer;
+    private Person measurer;
 
-    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, User holder, User measurer) {
+    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Person holder, Person measurer) {
         this.bird = bird;
         this.catchDateTime = catchDateTime;
         this.releaseDateTime = releaseDateTime;
@@ -62,7 +63,7 @@ public class HealthCheck {
         this.measurer = measurer;
     }
 
-    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, User holder, User measurer) {
+    public HealthCheck(Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, Person holder, Person measurer) {
         this.bird = bird;
         this.catchDateTime = catchDateTime;
         this.releaseDateTime = releaseDateTime;
@@ -71,7 +72,7 @@ public class HealthCheck {
         this.measurer = measurer;
     }
 
-    public HealthCheck(Long id, Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, User holder, User measurer) {
+    public HealthCheck(Long id, Bird bird, LocalDateTime catchDateTime, LocalDateTime releaseDateTime, Point location, Person holder, Person measurer) {
         this.id = id;
         this.bird = bird;
         this.catchDateTime = catchDateTime;

@@ -31,12 +31,12 @@ INSERT INTO TRANSMITTER (task_id, health_check_id, channel, comment, finish, sta
 VALUES (16, 1, '50', 'test', '2023-06-01 13:00:00', '2023-06-01 12:45:00', 'ATTACHED', '1.5'),
        (17, 2, '51', 'test', '2023-07-01 14:45:00', '2023-07-01 15:14:13', 'REPLACED', '-2.0');
 
-INSERT INTO USER (id, firstname, lastname)
+INSERT INTO PERSON (id, firstname, lastname)
 VALUES (6, 'Steve', 'McQueen'),
        (7, 'Julia', 'Roberts'),
        (8, 'Clint', 'Eastwood');
 
-INSERT INTO chick_timer (id, bird_id, location, user_recorder_id, ct_date_time, beats_per_minute, d_change_state,
+INSERT INTO chick_timer (id, bird_id, location, person_recorder_id, ct_date_time, beats_per_minute, d_change_state,
                          d_hatch, d_desert_alert,
                          wks_tx_life, emergence_hour, yesterday, two_days_ago, mean_four_days)
 VALUES (1, 1, ST_PointFromText('POINT(-36.5 174.5)', 4326), 6, '2023-06-28 11:14:00', 38, 2, 5, 5, 7, 7, 8, 9, 7);

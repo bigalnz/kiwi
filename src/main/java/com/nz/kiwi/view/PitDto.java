@@ -5,22 +5,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+
 @NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
-public class PitDto {
-    //@JsonProperty("taskId")
+public class PitDto implements Serializable {
     private Long taskId;
-    //@JsonProperty("code")
     private String code;
-    //@JsonProperty("dateInserted")
     private LocalDate dateInserted;
-    //@JsonProperty("comment")
     private String comment;
-    //@JsonProperty("healthCheckId")
     private Long healthCheckId;
 
 
+    public PitDto(Long taskId, String code, Long healthCheckId) {
+        this.taskId = taskId;
+        this.code = code;
+        this.healthCheckId = healthCheckId;
+    }
+
+    public PitDto(Long taskId, String code, LocalDate dateInserted, String comment, Long healthCheckId) {
+        this.taskId = taskId;
+        this.code = code;
+        this.dateInserted = dateInserted;
+        this.comment = comment;
+        this.healthCheckId = healthCheckId;
+    }
 }
