@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.geolatte.geom.G2D;
 import org.geolatte.geom.Point;
 
@@ -21,7 +18,8 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @ToString
 @Entity
-@Data
+@Getter
+@Setter
 @JsonIgnoreProperties({"hibernateLazyInitalizer", "handler"})
 @SequenceGenerator(name = "health_check_seq", sequenceName = "HEALTH_CHECK_SEQ", initialValue = 100, allocationSize = 50)
 @Table(name = "health_check")
@@ -32,7 +30,7 @@ public class HealthCheck {
     private Long id;
 
     @JsonManagedReference
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "bird_id")
     private Bird bird;
 
