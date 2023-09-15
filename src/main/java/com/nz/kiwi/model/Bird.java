@@ -1,6 +1,7 @@
 package com.nz.kiwi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
@@ -51,11 +52,11 @@ public class Bird {
     @JoinColumn(name = "current_pit_id")
     private Pit currentPit;
 
-    //@JsonBackReference
+    @JsonManagedReference(value = "bird-healthcheck")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<HealthCheck> listHealthCheck = new ArrayList<>();
 
-    //@JsonBackReference
+    @JsonManagedReference(value = "bird-chicktimer")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<ChickTimer> listChickTimer = new ArrayList<>();
 
@@ -84,5 +85,10 @@ public class Bird {
         this.comment = comment;
     }
 
-
+    public Bird(String name, Status status, Sex sex, Taxa taxa) {
+        this.name = name;
+        this.status = status;
+        this.sex = sex;
+        this.taxa = taxa;
+    }
 }

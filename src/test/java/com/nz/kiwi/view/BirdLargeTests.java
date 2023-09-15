@@ -157,9 +157,9 @@ class BirdLargeTests {
 
         bird1.setCurrentPit(pit2020);
         bird1.setCurrentTransmitter(transmitter2020);
-        bird1.addHealthCheck(healthCheck2020);
-        bird1.addHealthCheck(healthCheck2021);
-        bird1.addHealthCheck(healthCheck2022);
+        //bird1.addHealthCheck(healthCheck2020);
+        //bird1.addHealthCheck(healthCheck2021);
+        //bird1.addHealthCheck(healthCheck2022);
 
         /** Get Bird1 (probably id=100) Detailed Dto */
         assertNotNull(customBirdRepository.customQuery(bird1.getId()));

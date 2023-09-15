@@ -21,7 +21,7 @@ public abstract class Task {
     @GeneratedValue(strategy = SEQUENCE, generator = "task_seq")
     private Long taskId;
 
-    @JsonBackReference
+    @JsonBackReference(value = "healthcheck-task")
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private HealthCheck healthCheck;
 }

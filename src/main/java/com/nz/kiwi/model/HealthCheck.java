@@ -29,12 +29,12 @@ public class HealthCheck {
     @GeneratedValue(strategy = SEQUENCE, generator = "health_check_seq")
     private Long id;
 
-    @JsonManagedReference
+    @JsonBackReference(value = "bird-healthcheck")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "bird_id")
     private Bird bird;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "healthcheck-task")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "healthCheck")
     private List<Task> tasks;
 

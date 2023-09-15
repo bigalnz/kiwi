@@ -1,5 +1,6 @@
 package com.nz.kiwi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class ChickTimer {
     private Person personRecorder;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonBackReference(value = "bird-chicktimer")
     private Bird bird;
 
     private Integer beatsPerMinute;

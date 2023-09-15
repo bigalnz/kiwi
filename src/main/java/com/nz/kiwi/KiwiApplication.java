@@ -27,17 +27,17 @@ import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 @EnableEntityViews("com.nz.kiwi.model")
 public class KiwiApplication {
 
-    @Autowired
-    ChickTimerService chickTimerService;
+    //@Autowired
+    //ChickTimerService chickTimerService;
 
-    @Autowired
-    HealthCheckRepository healthCheckRepository;
+    //@Autowired
+    //HealthCheckRepository healthCheckRepository;
 
-    @Autowired
-    CustomBirdRepositoryImpl customBirdRepository;
+    //@Autowired
+    //CustomBirdRepositoryImpl customBirdRepository;
 
-    @Autowired
-    BirdRepository birdRepository;
+    //@Autowired
+    //BirdRepository birdRepository;
 
 
     private static final Logger logger = LoggerFactory.getLogger(KiwiApplication.class);

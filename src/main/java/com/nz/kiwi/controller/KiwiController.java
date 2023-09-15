@@ -38,7 +38,7 @@ public class KiwiController {
                 .body(birdService.listBirdSummaryDTO());
     }
 
-    @PostMapping("/")
+    @PostMapping(value = "/", consumes = "application/json;charset=UTF-8")
     ResponseEntity<Bird> BirdCreate(@RequestBody Bird newBird) {
         System.out.println("wait");
         Bird bird = birdService.save(newBird);
