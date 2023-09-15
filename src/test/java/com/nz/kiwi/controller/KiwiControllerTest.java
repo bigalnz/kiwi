@@ -22,6 +22,8 @@ public class KiwiControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    // basic first controller test
+
     @Test
     void whenValidInput_thenReturns200() throws Exception {
 
