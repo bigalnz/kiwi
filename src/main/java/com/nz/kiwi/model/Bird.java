@@ -7,6 +7,7 @@ import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

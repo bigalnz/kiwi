@@ -10,6 +10,7 @@ import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
 import com.nz.kiwi.view.HealthCheckDto;
 import com.nz.kiwi.view.Test;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,7 @@ public class KiwiController {
     }
 
     @PostMapping(value = "/", consumes = "application/json;charset=UTF-8")
-    ResponseEntity<Bird> BirdCreate(@RequestBody Bird newBird) {
+    ResponseEntity<Bird> BirdCreate(@Valid @RequestBody Bird newBird) {
         System.out.println("wait");
         Bird bird = birdService.save(newBird);
         return new ResponseEntity<>(bird, HttpStatus.CREATED);
