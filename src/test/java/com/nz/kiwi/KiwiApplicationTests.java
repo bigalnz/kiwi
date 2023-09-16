@@ -72,7 +72,7 @@ class KiwiApplicationTests {
 	}
 
 	@Test
-	void testJson() throws IOException, JsonProcessingException {
+	void testJson() throws IOException {
 
 		var objectMapper = new ObjectMapper();
 		objectMapper.registerModule(new GeolatteGeomModule());

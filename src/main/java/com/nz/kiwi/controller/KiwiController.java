@@ -1,24 +1,16 @@
 package com.nz.kiwi.controller;
-
-//import com.nz.kiwi.model.BirdView;
-//import com.nz.kiwi.model.BirdViewRepository;
-
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
-import com.nz.kiwi.view.HealthCheckDto;
-import com.nz.kiwi.view.Test;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.ServerException;
 import java.util.List;
 
 @RestController
@@ -26,10 +18,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KiwiController {
 
-    @Autowired
     private final BirdServiceImpl birdService;
 
-    @Autowired
     private final CustomBirdRepositoryImpl customBirdRepository;
 
     /**
@@ -38,7 +28,6 @@ public class KiwiController {
     @GetMapping("/")
     public ResponseEntity<List<BirdSummaryDto>> listBirdSummaryDTO() {
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(birdService.listBirdSummaryDTO());
     }
 
@@ -48,7 +37,6 @@ public class KiwiController {
     @GetMapping("/{id}")
     public ResponseEntity<BirdDetailsDto> BirdDetailsDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(customBirdRepository.customQuery(id));
     }
 
@@ -66,7 +54,6 @@ public class KiwiController {
     public ResponseEntity<Object> BirdSummaryDTOCustom4(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .header("Custom-Header", "foo")
                 .body(customBirdRepository.customQuery4(id));
     }
 

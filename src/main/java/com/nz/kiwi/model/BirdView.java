@@ -24,7 +24,7 @@ public interface BirdView {
     List<HealthCheckView> getListHealthCheck();
 
     @EntityView(HealthCheck.class)
-    public interface HealthCheckView {
+    interface HealthCheckView {
         @IdMapping
         Long getId();
 
