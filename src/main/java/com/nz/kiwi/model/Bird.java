@@ -32,8 +32,8 @@ public class Bird {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "bird_seq")
     private Long id;
-    @Column(unique = true)
-    @NotEmpty
+    @Column(nullable = false, unique = true)
+    @NotEmpty(message = "Name must not be null or empty")
     private String name;
     @Enumerated(EnumType.STRING)
     private Status status;

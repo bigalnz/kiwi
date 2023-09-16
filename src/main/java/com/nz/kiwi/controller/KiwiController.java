@@ -32,6 +32,9 @@ public class KiwiController {
     @Autowired
     private final CustomBirdRepositoryImpl customBirdRepository;
 
+    /**
+     * List Bird Summary Dto (GET)
+     */
     @GetMapping("/")
     public ResponseEntity<List<BirdSummaryDto>> listBirdSummaryDTO() {
         return ResponseEntity.ok()
@@ -39,14 +42,9 @@ public class KiwiController {
                 .body(birdService.listBirdSummaryDTO());
     }
 
-    @PostMapping(value = "/", consumes = "application/json;charset=UTF-8")
-    ResponseEntity<Bird> BirdCreate(@Valid @RequestBody Bird newBird) {
-        System.out.println("wait");
-        Bird bird = birdService.save(newBird);
-        return new ResponseEntity<>(bird, HttpStatus.CREATED);
-    }
-
-
+    /**
+     * Bird Detail Dto (GET)
+     */
     @GetMapping("/{id}")
     public ResponseEntity<BirdDetailsDto> BirdDetailsDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
@@ -54,6 +52,15 @@ public class KiwiController {
                 .body(customBirdRepository.customQuery(id));
     }
 
+    /**
+     * Create Bird (POST)
+     */
+    @PostMapping(value = "/", consumes = "application/json;charset=UTF-8")
+    ResponseEntity<Bird> BirdCreate(@Valid @RequestBody Bird newBird) {
+        System.out.println("wait");
+        Bird bird = birdService.save(newBird);
+        return new ResponseEntity<>(bird, HttpStatus.CREATED);
+    }
 
     @GetMapping(value = "/custom4/{id}", produces = "application/json")
     public ResponseEntity<Object> BirdSummaryDTOCustom4(@PathVariable Long id) {
