@@ -17,14 +17,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MeasurementsController {
 
-    @Autowired
     private final MeasurementsServiceImpl measurementsService;
-
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<LengthMeasurements>> findMeasure(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(measurementsService.getMeasurements(id));
     }
 

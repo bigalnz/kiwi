@@ -1,6 +1,5 @@
 package com.nz.kiwi;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;

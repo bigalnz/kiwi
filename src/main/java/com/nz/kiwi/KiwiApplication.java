@@ -1,26 +1,12 @@
 package com.nz.kiwi;
 
 import com.blazebit.persistence.integration.view.spring.EnableEntityViews;
-import com.nz.kiwi.model.HealthCheck;
-import com.nz.kiwi.repository.BirdRepository;
-import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
-import com.nz.kiwi.repository.HealthCheckRepository;
-import com.nz.kiwi.service.ChickTimerService;
-import com.nz.kiwi.view.HealthCheckDto;
 import lombok.extern.slf4j.Slf4j;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-
-import static org.geolatte.geom.builder.DSL.g;
-import static org.geolatte.geom.builder.DSL.point;
-import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 
 @Slf4j
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})

@@ -20,14 +20,21 @@ import java.util.Optional;
 public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
-    private final LengthMeasurementsServiceImpl lengthMeasurementsService;
-    private final WeightMeasurementsServiceImpl weightMeasurementsService;
+    // commented out during testing of BirdTests - may need to come back in
+    //private final LengthMeasurementsServiceImpl lengthMeasurementsService;
+    //private final WeightMeasurementsServiceImpl weightMeasurementsService;
 
 
 /*    public BirdDetailsDto getBirdDetailsDtoById(Long id) {
         BirdDetailsDto birdDetailsDto =
         return birdDetailsDto;
     }*/
+
+
+    @Override
+    public Bird save(Bird bird) {
+        return birdRepository.save(bird);
+    }
 
     public List<BirdInfo> findBirdById(Long id) {
         return birdRepository.findBirdById(id);
@@ -48,11 +55,6 @@ public class BirdServiceImpl implements BirdService {
 
     public Optional<Bird> get(Long id) {
         return birdRepository.findById(id);
-    }
-
-    @Override
-    public Bird save(Bird bird) {
-        return birdRepository.save(bird);
     }
 
     @Override

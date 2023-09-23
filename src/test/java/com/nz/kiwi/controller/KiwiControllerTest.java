@@ -1,24 +1,25 @@
 package com.nz.kiwi.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
 import com.nz.kiwi.implementation.BirdServiceImpl;
+import com.nz.kiwi.implementation.CustomBirdServiceImpl;
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.model.Pit;
 import com.nz.kiwi.model.Transmitter;
-import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
+import com.nz.kiwi.repository.CustomBirdRepository;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,11 +27,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.nz.kiwi.ResponseBodyMatchers.responseBody;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
 
 @WebMvcTest(controllers = KiwiController.class)
 public class KiwiControllerTest {
@@ -44,8 +49,11 @@ public class KiwiControllerTest {
     @MockBean
     private BirdServiceImpl birdService;
 
+    //@MockBean
+    //private CustomBirdRepository customBirdRepository;
+
     @MockBean
-    private CustomBirdRepositoryImpl customBirdRepository;
+    private CustomBirdServiceImpl customBirdService;
 
     /**
      * test standard bird input (POST)
@@ -53,12 +61,27 @@ public class KiwiControllerTest {
     @Test
     @DisplayName("Should return a new Bird (POST) and http code 201 (created)")
     void createBird_thenReturns201() throws Exception {
-        Bird bird = new Bird("Bobby Brown", Status.ALIVE, Sex.FEMALE, Taxa.BROWN_KIWI);
+
+        String requestBody = """
+                {
+                    "name": "Barry Manilow",
+                    "sex": "FEMALE",
+                    "taxa": "ROWI",
+                    "status": "ALIVE"
+                }
+                """;
+
+        Bird expectedResponseBody = new Bird("Barry Manilow", Status.ALIVE, Sex.FEMALE, Taxa.ROWI);
+
+        when(birdService.save(any(Bird.class))).thenReturn(expectedResponseBody);
 
         mockMvc.perform(post("/kiwis/")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(bird)))
-                .andExpect(status().isCreated());
+                        .accept(APPLICATION_JSON)
+                        .contentType(APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(responseBody().containsObjectAsJson(expectedResponseBody, Bird.class));
     }
 
     /**
@@ -66,8 +89,10 @@ public class KiwiControllerTest {
      */
     @Test
     void whenNullValue_thenReturns400() throws Exception {
-        Bird bird = new Bird(null, Status.ALIVE, Sex.FEMALE, Taxa.BROWN_KIWI);
-
+        Bird bird = new Bird();
+        bird.setSex(Sex.FEMALE);
+        bird.setTaxa(Taxa.BROWN_KIWI);
+        bird.setStatus(Status.DECEASED);
         mockMvc.perform(post("/kiwis/")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(bird)))

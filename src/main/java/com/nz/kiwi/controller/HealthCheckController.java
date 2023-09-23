@@ -18,28 +18,24 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class HealthCheckController {
 
-    @Autowired
     private final HealthCheckServiceImpl healthCheckService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<HealthCheck>> find(@PathVariable Long id) {
         Optional<HealthCheck> test = healthCheckService.getOneManually(Long.valueOf(1));
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(healthCheckService.getOneManually(id));
     }
 
     @GetMapping("/fhc/{id}")
     public ResponseEntity<Optional<HealthCheck>> findFull(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(healthCheckService.getFullHealthCheck(id));
     }
 
     @GetMapping("/")
     public ResponseEntity<List<HealthCheck>> list() {
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(healthCheckService.findAllHealthChecksBy());
     }
 

@@ -1,11 +1,12 @@
 package com.nz.kiwi.controller;
 import com.nz.kiwi.implementation.BirdServiceImpl;
+import com.nz.kiwi.implementation.CustomBirdServiceImpl;
 import com.nz.kiwi.model.Bird;
-import com.nz.kiwi.repository.CustomBirdRepositoryImpl;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class KiwiController {
 
     private final BirdServiceImpl birdService;
 
-    private final CustomBirdRepositoryImpl customBirdRepository;
+    private final CustomBirdServiceImpl customBirdService;
 
     /**
      * List Bird Summary Dto (GET)
@@ -37,13 +38,13 @@ public class KiwiController {
     @GetMapping("/{id}")
     public ResponseEntity<BirdDetailsDto> BirdDetailsDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .body(customBirdRepository.customQuery(id));
+                .body(customBirdService.customQuery(id));
     }
 
     /**
      * Create Bird (POST)
      */
-    @PostMapping(value = "/", consumes = "application/json;charset=UTF-8")
+    @PostMapping(value = "/", consumes = "application/json")
     ResponseEntity<Bird> BirdCreate(@Valid @RequestBody Bird newBird) {
         System.out.println("wait");
         Bird bird = birdService.save(newBird);
@@ -54,7 +55,7 @@ public class KiwiController {
     public ResponseEntity<Object> BirdSummaryDTOCustom4(@PathVariable Long id) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(customBirdRepository.customQuery4(id));
+                .body(customBirdService.customQuery4(id));
     }
 
 }

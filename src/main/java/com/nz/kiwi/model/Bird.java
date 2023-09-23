@@ -1,11 +1,11 @@
 package com.nz.kiwi.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nz.kiwi.enumeration.Sex;
 import com.nz.kiwi.enumeration.Status;
 import com.nz.kiwi.enumeration.Taxa;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -34,10 +34,12 @@ public class Bird {
     @NotEmpty(message = "Name must not be null or empty")
     private String name;
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Status status;
     private LocalDate dateDeceased;
     @Enumerated(EnumType.STRING)
     private Sex sex;
+    @NotNull
     private Taxa taxa;
     @Lob
     private String comment;
@@ -61,6 +63,11 @@ public class Bird {
 
 
     public Bird(String name) {
+        this.name = name;
+    }
+
+    public Bird(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -90,4 +97,22 @@ public class Bird {
         this.sex = sex;
         this.taxa = taxa;
     }
+
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof Bird))
+            return false;
+
+        Bird other = (Bird) o;
+
+        return id != null &&
+                id.equals(other.getId());
+    }
+
 }

@@ -20,31 +20,25 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PitController {
 
-    @Autowired
     private final PitServiceImpl pitService;
-
-    @Autowired
     private final HealthCheckServiceImpl healthCheckService;
-
-    @Autowired
     private PitMapper pitMapper;
 
-// GET ONE PIT
+    // GET ONE PIT
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Pit>> find(@PathVariable Long id) {
         System.out.println("test again newest ddd");
         return ResponseEntity.ok()
-                .header("Custom-Header", "foo")
                 .body(pitService.findById(id));
     }
 
-// SAVE ONE PIT WITH POST
-@PostMapping(value = "/")
-ResponseEntity<Pit> newPIT(@RequestBody PitDto pitDto) {
-    Pit createdPit = pitMapper.toEntity(pitDto);
-    HealthCheck healthCheck = healthCheckService.get(pitDto.getHealthCheckId()).orElseThrow(() -> new EntityNotFoundException("error Health CHeck Id not found"));
-    createdPit.setHealthCheck(healthCheck);
-    Pit savedPit = pitService.savePIT(createdPit);
-    return ResponseEntity.ok().body(savedPit);
-}
+    // SAVE ONE PIT WITH POST
+/*    @PostMapping(value = "/")
+    ResponseEntity<Pit> newPIT(@RequestBody PitDto pitDto) {
+        Pit createdPit = pitMapper.toEntity(pitDto);
+        HealthCheck healthCheck = healthCheckService.get(pitDto.getHealthCheckId()).orElseThrow(() -> new EntityNotFoundException("error Health CHeck Id not found"));
+        createdPit.setHealthCheck(healthCheck);
+        Pit savedPit = pitService.savePIT(createdPit);
+        return ResponseEntity.ok().body(savedPit);
+    }*/
 }
