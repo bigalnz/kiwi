@@ -5,8 +5,10 @@ import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.service.BirdService;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,7 @@ import java.util.Optional;
 public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
+
     // commented out during testing of BirdTests - may need to come back in
     //private final LengthMeasurementsServiceImpl lengthMeasurementsService;
     //private final WeightMeasurementsServiceImpl weightMeasurementsService;

@@ -48,6 +48,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
+    implementation group: 'net.datafaker', name: 'datafaker', version: '2.0.1'
     //implementation 'org.flywaydb:flyway-core'
     //implementation "org.flywaydb:flyway-mysql"
 

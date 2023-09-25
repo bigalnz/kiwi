@@ -72,9 +72,7 @@ public class KiwiControllerTest {
                 """;
 
         Bird expectedResponseBody = new Bird("Barry Manilow", Status.ALIVE, Sex.FEMALE, Taxa.ROWI);
-
         when(birdService.save(any(Bird.class))).thenReturn(expectedResponseBody);
-
         mockMvc.perform(post("/kiwis/")
                         .accept(APPLICATION_JSON)
                         .contentType(APPLICATION_JSON)
