@@ -37,16 +37,23 @@ repositories {
 
 dependencies {
 
+    //implementation group: 'org.testcontainers', name: 'jdbc', version: '1.19.0'
+    testImplementation "org.testcontainers:mysql"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation "org.testcontainers:junit-jupiter"
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
     implementation group: 'net.datafaker', name: 'datafaker', version: '2.0.1'
     //implementation 'org.flywaydb:flyway-core'
@@ -65,13 +72,13 @@ dependencies {
     implementation group: 'org.hibernate.orm', name: 'hibernate-spatial', version: '6.2.6.Final'
     implementation group: 'org.orbisgis', name: 'h2gis', version: '2.2.0'
 
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
-    runtimeOnly 'mysql:mysql-connector-java'
-    runtimeOnly 'com.h2database:h2'
+    //implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+    //runtimeOnly 'mysql:mysql-connector-java'
+    //runtimeOnly 'com.h2database:h2'
 
-	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.3.Final'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
-	implementation group: 'com.vladmihalcea', name: 'hibernate-types-60', version: '2.21.1'
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    implementation group: 'com.vladmihalcea', name: 'hibernate-types-60', version: '2.21.1'
 }
 
 bootJar {

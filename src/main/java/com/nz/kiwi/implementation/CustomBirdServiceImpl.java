@@ -46,8 +46,8 @@ public class CustomBirdServiceImpl implements CustomBirdService {
     }
 
     @Override
-    public Object customQuery4(Long id) {
-        return null;
+    public BirdDetailsDto customQuery4(Long id) {
+        return customBirdRepository.customQuery4(id);
     }
 
     @Override

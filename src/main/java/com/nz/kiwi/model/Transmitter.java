@@ -2,14 +2,13 @@ package com.nz.kiwi.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue("TRANSMITTER")
@@ -24,6 +23,7 @@ public class Transmitter extends Task {
 
     @Enumerated(EnumType.STRING)
     Type transmitterTaskType;
+
     public enum Type {
         ATTACHED,
         REMOVED,
@@ -33,4 +33,20 @@ public class Transmitter extends Task {
     @Lob
     private String comment;
 
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof Transmitter))
+            return false;
+
+        Transmitter other = (Transmitter) o;
+
+        return getTaskId() != null &&
+                getTaskId().equals(other.getTaskId());
+    }
 }

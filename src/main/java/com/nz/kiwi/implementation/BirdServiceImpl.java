@@ -1,14 +1,14 @@
 package com.nz.kiwi.implementation;
 
 import com.nz.kiwi.model.Bird;
+import com.nz.kiwi.view.BirdCreateDto;
+import com.nz.kiwi.mapper.BirdMapper;
 import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.service.BirdService;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,21 +22,26 @@ import java.util.Optional;
 public class BirdServiceImpl implements BirdService {
 
     private final BirdRepository birdRepository;
-
-    // commented out during testing of BirdTests - may need to come back in
-    //private final LengthMeasurementsServiceImpl lengthMeasurementsService;
-    //private final WeightMeasurementsServiceImpl weightMeasurementsService;
-
-
-/*    public BirdDetailsDto getBirdDetailsDtoById(Long id) {
-        BirdDetailsDto birdDetailsDto =
-        return birdDetailsDto;
-    }*/
+    private final BirdMapper birdMapper;
 
 
     @Override
     public Bird save(Bird bird) {
         return birdRepository.save(bird);
+    }
+
+    @Override
+    public BirdCreateDto getBirdById(Long id) {
+        Bird bird = birdRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bird not found"));
+        return birdMapper.toDto(bird);
+    }
+
+    @Override
+    public BirdCreateDto createBird(BirdCreateDto createBirdDto) {
+        Bird bird = birdMapper.toEntity(createBirdDto);
+        Bird savedBird = birdRepository.save(bird);
+        return birdMapper.toDto(savedBird);
     }
 
     public List<BirdInfo> findBirdById(Long id) {

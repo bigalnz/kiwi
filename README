@@ -1,0 +1,1 @@
+docker run -e MYSQL_ROOT_PASSWORD=Ryangra2017 --name=kiwi_dev_mysql -d mysql -p 3306:3306

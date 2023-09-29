@@ -19,6 +19,7 @@ import static jakarta.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
+@Table(name = "chick_timer")
 @SequenceGenerator(name = "chick_timer_seq", sequenceName = "CT_SEQ", initialValue = 100, allocationSize = 50)
 public class ChickTimer {
     @Id
@@ -45,5 +46,6 @@ public class ChickTimer {
     private Integer yesterday;
     private Integer twoDaysAgo;
     private Integer meanFourDays;
+
 
 }

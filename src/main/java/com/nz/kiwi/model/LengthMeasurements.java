@@ -1,14 +1,13 @@
 package com.nz.kiwi.model;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
 public class LengthMeasurements extends Task {
 
     private Double beakLength;
@@ -46,5 +45,22 @@ public class LengthMeasurements extends Task {
 
     public void setTarsusDepth(Double tarsusDepth) {
         this.tarsusDepth = tarsusDepth;
+    }
+
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof LengthMeasurements))
+            return false;
+
+        LengthMeasurements other = (LengthMeasurements) o;
+
+        return getTaskId() != null &&
+                getTaskId().equals(other.getTaskId());
     }
 }

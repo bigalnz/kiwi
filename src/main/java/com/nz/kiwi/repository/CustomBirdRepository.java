@@ -81,9 +81,9 @@ public class CustomBirdRepository implements CustomBirdService {
     }
 
     @Override
-    public Object customQuery4(Long id) {
-        return entityManager.createQuery(
-                        "SELECT NEW com.nz.kiwi.view.Test(b.id, b.name, b.sex, b.status, " +
+    public BirdDetailsDto customQuery4(Long id) {
+        return (BirdDetailsDto) entityManager.createQuery(
+                        "SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.id, b.name, b.sex, b.status, " +
                                 "NEW com.nz.kiwi.view.TransmitterDto(t.id, t.channel, t.tuning, t.transmitterTaskType, t.comment ), " +
                                 "NEW com.nz.kiwi.view.PitDto(p.id, p.code, p.dateInserted, p.comment, p.healthCheck.id ), " +
                                 "NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location)) FROM Bird b " +
