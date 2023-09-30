@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomBirdService {
-    BirdDetailsDto customQuery(Long id);
+    BirdDetailsDto customQueryGetBirdDetails(Long id);
 
     BirdSummaryDto customQuery1(Long id);
 

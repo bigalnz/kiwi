@@ -16,19 +16,33 @@ public class CustomBirdRepository implements CustomBirdService {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     /**
-     * Query to retrieve Bird Dto with details
+     * Query to retrieve Bird Dto with details from multiple entities
      * TO DO:
      * Add bird.id to query and dto
      * Add healthcheck id for Lengths and Weights
-     * <p>
-     * Check query is returning correct values -
-     * <p>
-     * Add chick timer / relationship to all of above - will need same test data in db
+     * Add chick timer / relationship to all of above
      */
+
     @Override
-    public BirdDetailsDto customQuery(Long id) {
+    public BirdDetailsDto customQueryGetBirdDetails(Long id) {
+        return (BirdDetailsDto) entityManager.createQuery(
+                        "SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.id, b.name, b.sex, b.status, " +
+                                "NEW com.nz.kiwi.view.TransmitterDto(t.id, t.channel, t.tuning, t.transmitterTaskType, t.comment ), " +
+                                "NEW com.nz.kiwi.view.PitDto(p.id, p.code, p.dateInserted, p.comment, p.healthCheck.id ), " +
+                                "NEW com.nz.kiwi.view.HealthCheckDto(hc.id, hc.catchDateTime, hc.releaseDateTime, hc.location)) FROM Bird b " +
+                                "LEFT JOIN b.currentTransmitter t " +
+                                "LEFT JOIN b.currentPit p " +
+                                "LEFT JOIN HealthCheck hc ON hc.bird.id=b.id " +
+                                "WHERE b.id=:id " +
+                                "GROUP BY b, hc ORDER BY hc.catchDateTime DESC LIMIT 1")
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
+
+    @Override
+    public BirdDetailsDto customQuery4(Long id) {
         return (BirdDetailsDto) entityManager.createQuery(
                         "SELECT NEW com.nz.kiwi.view.BirdDetailsDto(" +
                                 "b.id, b.name, b.sex, b.status, b.currentTransmitter, b.currentPit," +
@@ -80,8 +94,8 @@ public class CustomBirdRepository implements CustomBirdService {
                 .getSingleResult();
     }
 
-    @Override
-    public BirdDetailsDto customQuery4(Long id) {
+    //@Override
+    public BirdDetailsDto customQuery(Long id) {
         return (BirdDetailsDto) entityManager.createQuery(
                         "SELECT NEW com.nz.kiwi.view.BirdDetailsDto(b.id, b.name, b.sex, b.status, " +
                                 "NEW com.nz.kiwi.view.TransmitterDto(t.id, t.channel, t.tuning, t.transmitterTaskType, t.comment ), " +

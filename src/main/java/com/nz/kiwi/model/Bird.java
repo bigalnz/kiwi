@@ -62,7 +62,6 @@ public class Bird {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "bird")
     private List<ChickTimer> listChickTimer = new ArrayList<>();
 
-
     public Bird(String name) {
         this.name = name;
     }

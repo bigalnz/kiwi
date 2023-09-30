@@ -37,7 +37,7 @@ public class KiwiController {
     @GetMapping("/{id}")
     public ResponseEntity<BirdDetailsDto> BirdDetailsDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .body(customBirdService.customQuery4(id));
+                .body(customBirdService.customQueryGetBirdDetails(id));
     }
 
     /**

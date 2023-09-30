@@ -52,7 +52,6 @@ class BirdLargeTests {
     @Autowired
     private MeasurementRepository measurementRepository;
 
-
     @Test
     void contextLoads() {
     }
@@ -162,7 +161,7 @@ class BirdLargeTests {
         //bird1.addHealthCheck(healthCheck2022);
 
         /** Get Bird1 (probably id=100) Detailed Dto */
-        assertNotNull(customBirdService.customQuery(bird1.getId()));
+        assertNotNull(customBirdService.customQueryGetBirdDetails(bird1.getId()));
 
         assertNotNull(bird1.getListHealthCheck());
         //assert(bird.getListHealthCheck().size()==3);
