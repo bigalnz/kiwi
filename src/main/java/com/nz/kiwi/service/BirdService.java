@@ -1,9 +1,7 @@
 package com.nz.kiwi.service;
 
 import com.nz.kiwi.model.Bird;
-import com.nz.kiwi.view.BirdCreateDto;
-import com.nz.kiwi.view.BirdInfo;
-import com.nz.kiwi.view.BirdSummaryDto;
+import com.nz.kiwi.view.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +9,8 @@ import java.util.Optional;
 public interface BirdService {
 
     Bird save(Bird bird);
+
+    BirdDetailsDto getBirdDetails(Long id);
 
     BirdCreateDto getBirdById(Long id);
 

@@ -1,3 +1,10 @@
+/*
+ *** Bird Natasha ***
+ Newest Health Check is 2023-06-04 1400 with hc id = 4
+ Newest Lengths are on 2023-06-03 on hc = 3 with AVG Beak 99.25, TD 10.85, TL 45.15, TW 7.25
+ Newest Weights are on 2023-06-03 on hc = 3 with AVG Weight 3.075
+ */
+
 INSERT INTO bird (id, name, sex, status, taxa, comment)
 VALUES (1, 'Natasha', 'FEMALE', 'ALIVE', 1, 'Big beak'),
        (2, 'Jono', 'MALE', 'ALIVE', 2, 'Fast runner'),

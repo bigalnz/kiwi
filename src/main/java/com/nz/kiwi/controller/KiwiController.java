@@ -18,8 +18,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KiwiController {
 
-    private final BirdServiceImpl birdService;
+    /**
+     * TO DO
+     * Make create bird return a location
+     * Create a update controller
+     */
 
+    private final BirdServiceImpl birdService;
     private final CustomBirdServiceImpl customBirdService;
 
     /**
@@ -37,7 +42,7 @@ public class KiwiController {
     @GetMapping("/{id}")
     public ResponseEntity<BirdDetailsDto> BirdDetailsDTO(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .body(customBirdService.customQueryGetBirdDetails(id));
+                .body(birdService.getBirdDetails(id));
     }
 
     /**

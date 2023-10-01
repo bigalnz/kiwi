@@ -7,6 +7,7 @@ import com.nz.kiwi.view.Test;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,8 +43,8 @@ public class CustomBirdRepository implements CustomBirdService {
 
 
     @Override
-    public BirdDetailsDto customQuery4(Long id) {
-        return (BirdDetailsDto) entityManager.createQuery(
+    public Object customQuery4(Long id) {
+        return (Object) entityManager.createQuery(
                         "SELECT NEW com.nz.kiwi.view.BirdDetailsDto(" +
                                 "b.id, b.name, b.sex, b.status, b.currentTransmitter, b.currentPit," +
                                 "NEW com.nz.kiwi.view.LengthMeasurementsDto(MAX(h.catchDateTime), AVG(l.beakLength), AVG(l.tarsusLength),  AVG(l.tarsusWidth), AVG(l.tarsusDepth))," +

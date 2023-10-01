@@ -24,5 +24,4 @@ public class Test implements Serializable {
     public PitDto currentPitDto;
     public HealthCheckDto healthCheckDto;
 
-
 }

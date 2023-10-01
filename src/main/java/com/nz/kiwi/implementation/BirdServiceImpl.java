@@ -1,12 +1,10 @@
 package com.nz.kiwi.implementation;
 
 import com.nz.kiwi.model.Bird;
-import com.nz.kiwi.view.BirdCreateDto;
+import com.nz.kiwi.view.*;
 import com.nz.kiwi.mapper.BirdMapper;
 import com.nz.kiwi.repository.BirdRepository;
 import com.nz.kiwi.service.BirdService;
-import com.nz.kiwi.view.BirdInfo;
-import com.nz.kiwi.view.BirdSummaryDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -28,6 +26,10 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public Bird save(Bird bird) {
         return birdRepository.save(bird);
+    }
+
+    public BirdDetailsDto getBirdDetails(Long id) {
+        return birdRepository.getBirdDetails(id);
     }
 
     @Override
