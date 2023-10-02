@@ -2,7 +2,6 @@ package com.nz.kiwi.repository;
 
 import com.nz.kiwi.model.Bird;
 import com.nz.kiwi.view.BirdDetailsDto;
-import com.nz.kiwi.view.BirdDetailsDto1;
 import com.nz.kiwi.view.BirdInfo;
 import com.nz.kiwi.view.BirdSummaryDto;
 import org.springframework.data.jpa.repository.JpaRepository;

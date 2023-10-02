@@ -15,8 +15,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @TestPropertySource(properties = {
@@ -41,6 +40,15 @@ public class BirdRepositoryTest {
         birdFromDatabase = birdRepository.getBirdDetails(1L);
         assertThat(birdFromDatabase).isNotNull();
         assertTrue(birdFromDatabase instanceof BirdDetailsDto);
+        assertEquals(1, birdFromDatabase.getId());
+        assertEquals("Natasha", birdFromDatabase.getName());
+        assertEquals("ABC123", birdFromDatabase.currentPitDto.getCode());
+        assertEquals(50, birdFromDatabase.currentTransmitterDto.getChannel());
+        assertEquals(7.25, birdFromDatabase.lengthMeasurementsDto.getTarsusWidth());
+        assertEquals(10.85, birdFromDatabase.lengthMeasurementsDto.getTarsusDepth());
+        assertEquals(45.15, birdFromDatabase.lengthMeasurementsDto.getTarsusLength());
+        assertEquals(3.08, birdFromDatabase.weightMeasurementsDto.getWeight());
+
     }
 
 

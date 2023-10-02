@@ -1,6 +1,7 @@
 package com.nz.kiwi.controller;
 import com.nz.kiwi.implementation.BirdServiceImpl;
 import com.nz.kiwi.implementation.CustomBirdServiceImpl;
+import com.nz.kiwi.service.BirdService;
 import com.nz.kiwi.view.BirdCreateDto;
 import com.nz.kiwi.view.BirdDetailsDto;
 import com.nz.kiwi.view.BirdSummaryDto;
@@ -24,8 +25,7 @@ public class KiwiController {
      * Create a update controller
      */
 
-    private final BirdServiceImpl birdService;
-    private final CustomBirdServiceImpl customBirdService;
+    private final BirdService birdService;
 
     /**
      * List Bird Summary Dto (GET)
@@ -53,16 +53,6 @@ public class KiwiController {
         System.out.println("wait");
         BirdCreateDto bird = birdService.createBird(newBird);
         return new ResponseEntity<>(bird, HttpStatus.CREATED);
-    }
-
-    /**
-     * Any experimental query
-     */
-    @GetMapping(value = "/custom4/{id}", produces = "application/json")
-    public ResponseEntity<Object> BirdSummaryDTOCustom4(@PathVariable Long id) {
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(customBirdService.customQuery4(id));
     }
 
 }
