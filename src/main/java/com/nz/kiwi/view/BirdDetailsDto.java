@@ -20,10 +20,10 @@ public class BirdDetailsDto {
     public String name;
     public Sex sex;
     public Status status;
-    public TransmitterDto currentTransmitterDto;
-    public PitDto currentPitDto;
-    public HealthCheckDto healthCheckDto;
-    public LengthMeasurementsDto lengthMeasurementsDto;
-    public WeightMeasurementsDto weightMeasurementsDto;
+    public TransmitterDto currentTransmitter;
+    public PitDto currentPit;
+    public HealthCheckDto healthCheck;
+    public LengthMeasurementsDto lengthMeasurements;
+    public WeightMeasurementsDto weightMeasurements;
 
 }

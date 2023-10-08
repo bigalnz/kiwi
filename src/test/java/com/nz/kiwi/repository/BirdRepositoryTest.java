@@ -42,20 +42,18 @@ public class BirdRepositoryTest {
         assertTrue(birdFromDatabase instanceof BirdDetailsDto);
         assertEquals(1, birdFromDatabase.getId());
         assertEquals("Natasha", birdFromDatabase.getName());
-        assertEquals("ABC123", birdFromDatabase.currentPitDto.getCode());
-        assertEquals(50, birdFromDatabase.currentTransmitterDto.getChannel());
-        assertEquals(7.25, birdFromDatabase.lengthMeasurementsDto.getTarsusWidth());
-        assertEquals(10.85, birdFromDatabase.lengthMeasurementsDto.getTarsusDepth());
-        assertEquals(45.15, birdFromDatabase.lengthMeasurementsDto.getTarsusLength());
-        assertEquals(3.08, birdFromDatabase.weightMeasurementsDto.getWeight());
-
+        assertEquals("ABC123", birdFromDatabase.currentPit.getCode());
+        assertEquals(50, birdFromDatabase.currentTransmitter.getChannel());
+        assertEquals(7.25, birdFromDatabase.lengthMeasurements.getTarsusWidth());
+        assertEquals(10.85, birdFromDatabase.lengthMeasurements.getTarsusDepth());
+        assertEquals(45.15, birdFromDatabase.lengthMeasurements.getTarsusLength());
+        assertEquals(3.08, birdFromDatabase.weightMeasurements.getWeight());
     }
 
 
-
-    @BeforeEach
-    public void setUp() {
-        // With DataFaker
+    @Test
+    void shouldSaveAndReturnBird() {
+        // SETUP WITH FAKER
         TaxaFaker taxaFaker = new TaxaFaker();
         SexFaker sexFaker = new SexFaker();
         StatusFaker statusFaker = new StatusFaker();
@@ -65,13 +63,11 @@ public class BirdRepositoryTest {
         birdToDatabase.setTaxa(taxaFaker.taxa().nextTaxa());
         birdToDatabase.setSex(sexFaker.sex().nextSex());
         birdToDatabase.setStatus(statusFaker.status().nextStatus());
-    }
-
-
-    @Test
-    void shouldSaveAndReturnBird() {
+        // WHEN SAVING A BIRD
         Bird result = testEntityManager.persistAndFlush(birdToDatabase);
+        // RESULT
         assertNotNull(result.getId());
+        assertTrue(result instanceof Bird);
     }
 
 }

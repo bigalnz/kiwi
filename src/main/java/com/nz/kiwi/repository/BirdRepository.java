@@ -22,6 +22,11 @@ public interface BirdRepository extends JpaRepository<Bird, Long> {
     // USING BIRD INFO INTERFACE
     List<BirdInfo> findBirdById(Long id);
 
+    Optional<Bird> findByName(String name);
+
+    @Query("SELECT CASE WHEN COUNT(b) > 0 THEN true ELSE false END FROM Bird b WHERE lower(b.name) like lower (concat('%', :birdName, '%'))")
+    boolean existsByName(@Param("birdName") String birdName);
+
     // USING BIRD INFO INTERFACE
     List<BirdInfo> findAllBy();
 

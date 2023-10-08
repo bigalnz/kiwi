@@ -71,8 +71,7 @@ public class Bird {
         this.name = name;
     }
 
-    public Bird(Long id, String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, List<HealthCheck> listHealthCheck) {
-        this.id = id;
+    public Bird(String name, Status status, LocalDate dateDeceased, Sex sex, Taxa taxa, String comment, List<HealthCheck> listHealthCheck) {
         this.name = name;
         this.status = status;
         this.dateDeceased = dateDeceased;
@@ -83,6 +82,15 @@ public class Bird {
     }
 
 
+    public Bird(Long id, String name, Status status, Sex sex, Taxa taxa, String comment) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+        this.sex = sex;
+        this.taxa = taxa;
+        this.comment = comment;
+    }
+
     public Bird(String name, Status status, Sex sex, Taxa taxa, String comment) {
         this.name = name;
         this.status = status;
@@ -91,7 +99,8 @@ public class Bird {
         this.comment = comment;
     }
 
-    public Bird(String name, Status status, Sex sex, Taxa taxa) {
+    public Bird(Long id, String name, Status status, Sex sex, Taxa taxa) {
+        this.id = id;
         this.name = name;
         this.status = status;
         this.sex = sex;

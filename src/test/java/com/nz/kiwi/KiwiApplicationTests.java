@@ -64,7 +64,7 @@ class KiwiApplicationTests {
 
 	@Test
 	public void should_store_bird() {
-		Bird bird = birdRepository.save(new Bird("Octavia", Status.ALIVE, Sex.FEMALE, Taxa.BROWN_KIWI, "JPA Unit Test"));
+		Bird bird = birdRepository.save(new Bird(810L, "Octavia", Status.ALIVE, Sex.FEMALE, Taxa.BROWN_KIWI, "JPA Unit Test"));
 		assertEquals("Octavia", bird.getName());
 		assertEquals(Status.ALIVE, bird.getStatus());
 		assertEquals(Sex.FEMALE, bird.getSex());

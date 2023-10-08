@@ -14,7 +14,9 @@ public interface BirdService {
 
     BirdCreateDto getBirdById(Long id);
 
-    BirdCreateDto createBird(BirdCreateDto createBirdDto);
+    Bird createBird(BirdCreateDto createBirdDto);
+
+    BirdCreateDto updateBird(BirdCreateDto createBirdDto, Long id);
 
     List<BirdInfo> findBirdById(Long id);
 

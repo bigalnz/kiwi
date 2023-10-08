@@ -11,5 +11,5 @@ public interface BirdMapper {
     BirdCreateDto toDto(Bird bird);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Bird partialUpdate(BirdCreateDto birdCreateDto, @MappingTarget Bird bird);
+    void partialUpdate(BirdCreateDto birdCreateDto, @MappingTarget Bird bird);
 }

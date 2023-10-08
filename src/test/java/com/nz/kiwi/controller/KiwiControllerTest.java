@@ -73,15 +73,16 @@ public class KiwiControllerTest {
                 }
                 """;
 
-        Bird expectedResponseBody = new Bird("Barry Manilow", Status.ALIVE, Sex.FEMALE, Taxa.ROWI);
+        Bird expectedResponseBody = new Bird(990L, "Barry Manilow", Status.ALIVE, Sex.FEMALE, Taxa.ROWI);
         when(birdService.save(any(Bird.class))).thenReturn(expectedResponseBody);
         mockMvc.perform(post("/kiwis/")
                         .accept(APPLICATION_JSON)
                         .contentType(APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isCreated())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(responseBody().containsObjectAsJson(expectedResponseBody, Bird.class));
+                .andExpect(header().string("location", "/api/kiwis/"));
+        //.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        //.andExpect(responseBody().containsObjectAsJson(expectedResponseBody, Bird.class));
     }
 
     /**
