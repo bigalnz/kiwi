@@ -35,4 +35,9 @@ public class GlobalExceptionHandler {
                         b -> b.getDefaultMessage(), (p, q) -> p, LinkedHashMap::new));
         return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(BirdAlreadyExistsException.class)
+    public ResponseEntity<?> nameAlreadyExists(BirdAlreadyExistsException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+    }
 }
